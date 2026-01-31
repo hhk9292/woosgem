@@ -4,7 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", "storybook-static/**"]
     },
     "dev": {
       "cache": false,
@@ -16,9 +16,6 @@
     "test": {
       "dependsOn": ["build"],
       "outputs": []
-    },
-    "clean": {
-      "cache": false
     }
   }
 }

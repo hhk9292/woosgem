@@ -1,8 +1,16 @@
 {
   "name": "@woosgem/ds-storybook",
   "version": "0.0.1",
+  "description": "Storybook documentation for WooSGem Design System",
+  "author": "woosgem",
+  "license": "MIT",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hhk9292/woosgem.git",
+    "directory": "packages/ds-storybook"
+  },
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build"
@@ -26,6 +34,7 @@
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "storybook": "^8.6.15",
+    "typescript": "^5.7.0",
     "vite": "^6.0.0"
   }
 }

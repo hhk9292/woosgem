@@ -21,9 +21,6 @@ pnpm test:watch
 # Run tests and update dashboard
 pnpm test:dashboard
 
-# Clean all build artifacts
-pnpm clean
-
 # Storybook (runs on port 6006)
 pnpm --filter @woosgem/ds-storybook dev
 ```

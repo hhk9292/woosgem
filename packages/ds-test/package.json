@@ -1,14 +1,22 @@
 {
   "name": "@woosgem/ds-test",
   "version": "0.0.1",
+  "description": "Unified test suite for WooSGem Design System",
+  "author": "woosgem",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hhk9292/woosgem.git",
+    "directory": "packages/ds-test"
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:log": "vitest run > test_output.txt 2>&1"
+    "test:log": "node scripts/test-with-log.js"
   },
   "dependencies": {
     "@woosgem/ds-core": "workspace:*",
@@ -21,6 +29,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@testing-library/vue": "^8.1.0",
     "@types/node": "^25.1.0",
+    "@vitejs/plugin-react": "^5.1.2",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/test-utils": "^2.4.6",
     "jsdom": "^27.4.0",

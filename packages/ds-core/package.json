@@ -1,10 +1,18 @@
 {
   "name": "@woosgem/ds-core",
   "version": "0.0.1",
+  "description": "Core definitions and Color Set Protocol for WooSGem Design System",
+  "author": "woosgem",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hhk9292/woosgem.git",
+    "directory": "packages/ds-core"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -17,11 +25,11 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "vitest run",
-    "clean": "rm -rf dist"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.18"
   },
   "dependencies": {
     "zod": "^4.3.6"

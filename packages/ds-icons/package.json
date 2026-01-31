@@ -1,18 +1,24 @@
 {
   "name": "@woosgem/ds-icons",
   "version": "0.0.1",
+  "description": "Pure SVG icon assets for WooSGem Design System",
+  "author": "woosgem",
+  "license": "MIT",
   "private": true,
   "type": "module",
-  "description": "Icon assets for WooSGem Design System",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hhk9292/woosgem.git",
+    "directory": "packages/ds-icons"
+  },
   "files": [
     "svg",
     "metadata"
   ],
-  "devDependencies": {
-    "svgo": "^3.3.2"
-  },
   "scripts": {
     "optimize": "svgo -f svg/sm -o svg/sm && svgo -f svg/md -o svg/md && svgo -f svg/lg -o svg/lg"
+  },
+  "devDependencies": {
+    "svgo": "^3.3.2"
   }
 }

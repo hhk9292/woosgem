@@ -1,8 +1,16 @@
 {
   "name": "@woosgem/ds-styles",
   "version": "0.0.1",
+  "description": "SCSS styles and theme system for WooSGem Design System",
+  "author": "woosgem",
+  "license": "MIT",
   "main": "./dist/index.css",
   "style": "./dist/index.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hhk9292/woosgem.git",
+    "directory": "packages/ds-styles"
+  },
   "exports": {
     ".": "./dist/index.css",
     "./min": "./dist/index.min.css",
@@ -12,11 +20,13 @@
       "sass": "./src/index.scss"
     }
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "node scripts/build.js",
-    "dev": "sass src/index.scss:dist/index.css --source-map --watch",
-    "clean": "rm -rf dist"
+    "dev": "sass src/index.scss:dist/index.css --source-map --watch"
   },
   "devDependencies": {
     "sass": "^1.83.0"
