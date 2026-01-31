@@ -1,5 +1,6 @@
 # WooSGem
 
+![CI](https://github.com/hhk9292/woosgem/actions/workflows/test.yml/badge.svg)
 ![Tests](https://img.shields.io/badge/tests-295%20passed-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-62%25-brightgreen)
 ![Components](https://img.shields.io/badge/components-10-blue)
