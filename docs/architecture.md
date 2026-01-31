@@ -5,6 +5,7 @@
 **Design System Packages (ds-* prefix):**
 - **@woosgem/ds-core** - Framework-agnostic component definitions + Color Set Protocol
 - **@woosgem/ds-icons** - Pure SVG icon assets (sm, md, lg) with theme support
+- **@woosgem/ds-test** - Shared test utilities and helpers
 - **@woosgem/ds-react** - React component wrappers using `forwardRef` and `memo`
 - **@woosgem/ds-vue** - Vue component wrappers using `defineComponent`
 - **@woosgem/ds-styles** - SCSS styles and theming (custom dart-sass build script)

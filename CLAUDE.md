@@ -21,6 +21,7 @@ WooSGem is a personal monorepo containing a multi-framework design system and ut
 **Packages:**
 - `@woosgem/ds-core` - Component definitions + CSP
 - `@woosgem/ds-icons` - Pure SVG icon assets (sm, md, lg)
+- `@woosgem/ds-test` - Shared test utilities
 - `@woosgem/ds-react` - React wrappers
 - `@woosgem/ds-vue` - Vue wrappers
 - `@woosgem/ds-styles` - SCSS styles
