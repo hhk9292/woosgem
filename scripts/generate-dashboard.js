@@ -63,13 +63,13 @@ function main() {
   let readme = readFileSync(readmePath, 'utf-8');
 
   readme = readme.replace(
-    /!\[Tests\]\(https:\/\/img\.shields\.io\/badge\/tests-[^)]+\)/,
-    `![Tests](${testsBadge})`
+    /\[?!\[Tests\]\(https:\/\/img\.shields\.io\/badge\/tests-[^)]+\)\]?(\([^)]+\))?/,
+    `[![Tests](${testsBadge})](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)`
   );
 
   readme = readme.replace(
-    /!\[Coverage\]\(https:\/\/img\.shields\.io\/badge\/coverage-[^)]+\)/,
-    `![Coverage](${coverageBadge})`
+    /\[?!\[Coverage\]\(https:\/\/img\.shields\.io\/badge\/coverage-[^)]+\)\]?(\([^)]+\))?/,
+    `[![Coverage](${coverageBadge})](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)`
   );
 
   readme = readme.replace(
