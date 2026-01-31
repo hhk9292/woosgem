@@ -10,7 +10,7 @@
     },
     "jsx": "react-jsx",
     "exactOptionalPropertyTypes": false,
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    "types": ["node", "vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "vitest.config.ts"]
 }
