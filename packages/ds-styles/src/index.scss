@@ -1,0 +1,9 @@
+// Design System Styles
+// Import this file to get all component styles with theming support
+
+// Theme CSS Custom Properties (outputs :root, [data-theme="dark"], etc.)
+// Must be loaded first so CSS Custom Properties are defined before use
+@use 'tokens/theme-output';
+
+// Component styles (reference CSS Custom Properties from theme)
+@use 'components';

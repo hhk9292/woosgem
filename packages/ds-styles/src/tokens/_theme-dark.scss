@@ -1,0 +1,9 @@
+// ===================
+// Dark Theme Output
+// ===================
+// Outputs only dark theme CSS Custom Properties
+
+@use 'theme-generator' as generator;
+
+// Output dark theme CSS Custom Properties on :root
+@include generator.single-theme('dark');

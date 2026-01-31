@@ -1,0 +1,103 @@
+// ===================
+// Theme Generator
+// ===================
+// Mixins for generating CSS Custom Properties from color sets
+
+@use 'sass:map';
+@use 'color-sets' as sets;
+
+// CSS Custom Property prefix
+$prefix: 'wg-color' !default;
+
+// ===================
+// Mixin: generate-color-vars
+// ===================
+// Generates CSS Custom Properties from a color set map
+//
+// @param $color-set - SCSS map containing color name-value pairs
+// @example
+//   @include generate-color-vars(sets.$color-set-default);
+//   // Outputs: --wg-color-primary: #000000; etc.
+
+@mixin generate-color-vars($color-set) {
+  @each $name, $value in $color-set {
+    --#{$prefix}-#{$name}: #{$value};
+  }
+}
+
+// ===================
+// Mixin: theme
+// ===================
+// Applies a specific theme to a selector
+//
+// @param $theme-name - Name of the theme ('default', 'dark')
+// @param $selector - CSS selector to apply theme to (default: ':root')
+// @example
+//   @include theme('dark', '[data-theme="dark"]');
+
+@mixin theme($theme-name, $selector: ':root') {
+  $color-set: null;
+
+  @if $theme-name == 'default' {
+    $color-set: sets.$color-set-default;
+  } @else if $theme-name == 'dark' {
+    $color-set: sets.$color-set-dark;
+  } @else {
+    @error "Unknown theme: #{$theme-name}. Valid themes are: default, dark";
+  }
+
+  #{$selector} {
+    @include generate-color-vars($color-set);
+  }
+}
+
+// ===================
+// Mixin: all-themes
+// ===================
+// Outputs CSS for all themes at once
+// - Default theme on :root
+// - Dark theme on [data-theme="dark"]
+//
+// @example
+//   @include all-themes();
+
+@mixin all-themes() {
+  // Default theme (light)
+  :root {
+    @include generate-color-vars(sets.$color-set-default);
+  }
+
+  // Dark theme
+  [data-theme='dark'] {
+    @include generate-color-vars(sets.$color-set-dark);
+  }
+}
+
+// ===================
+// Mixin: single-theme
+// ===================
+// Outputs CSS for a single theme on :root
+// Used for build-time theme separation
+//
+// @param $theme-name - Name of the theme
+// @example
+//   @include single-theme('dark');
+
+@mixin single-theme($theme-name) {
+  @include theme($theme-name, ':root');
+}
+
+// ===================
+// Function: get-color-var
+// ===================
+// Returns a CSS variable reference for a color token
+//
+// @param $name - Color token name
+// @return - CSS var() reference
+// @example
+//   color: get-color-var('primary');
+//   // Returns: var(--wg-color-primary)
+
+@function get-color-var($name) {
+  @return var(--#{$prefix}-#{$name});
+}

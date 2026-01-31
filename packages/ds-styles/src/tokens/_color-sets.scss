@@ -1,0 +1,197 @@
+// ===================
+// Color Sets Definition
+// ===================
+// Two theme color sets: default (light) and dark
+// Each set includes all semantic tokens and alpha variants
+
+@use 'sass:map';
+
+// ===================
+// Primitive Colors (Theme-independent)
+// ===================
+$primitives: (
+  // Grayscale
+  'black': #000000,
+  'white': #FFFFFF,
+  'gray-900': #1A1A1A,
+  'gray-700': #4A4A4A,
+  'gray-500': #8A8A8A,
+  'gray-300': #C4C4C4,
+  'gray-100': #F5F5F5,
+  'gray-50': #FAFAFA,
+
+  // Accent Colors
+  'red-500': #E63312,
+  'red-400': #EF4444,
+  'red-100': #FEE9E7,
+
+  'green-500': #00875A,
+  'green-400': #22C55E,
+  'green-100': #E6F4EF,
+
+  'blue-500': #0066CC,
+  'blue-400': #3B82F6,
+  'blue-100': #E6F0FA,
+
+  'yellow-500': #FFB800,
+  'yellow-400': #F59E0B,
+  'yellow-100': #FFF8E6,
+);
+
+// ===================
+// Theme: Default (Light)
+// ===================
+$color-set-default: (
+  // Primary
+  'primary': map.get($primitives, 'black'),
+  'primary-hover': map.get($primitives, 'gray-900'),
+  'primary-active': map.get($primitives, 'gray-900'),
+
+  // Secondary
+  'secondary': map.get($primitives, 'gray-700'),
+  'secondary-hover': map.get($primitives, 'gray-900'),
+  'secondary-active': map.get($primitives, 'gray-900'),
+
+  // Semantic - States
+  'danger': map.get($primitives, 'red-500'),
+  'danger-hover': #CC2A0D,
+  'danger-active': #B32209,
+
+  'success': map.get($primitives, 'green-500'),
+  'success-hover': #006B47,
+  'success-active': #00533A,
+
+  'warning': map.get($primitives, 'yellow-500'),
+  'warning-hover': #E6A500,
+  'warning-active': #CC9500,
+
+  'info': map.get($primitives, 'blue-500'),
+  'info-hover': #0052A3,
+  'info-active': #004080,
+
+  // Text
+  'text': map.get($primitives, 'black'),
+  'text-muted': map.get($primitives, 'gray-700'),
+  'text-subtle': map.get($primitives, 'gray-500'),
+  'text-inverse': map.get($primitives, 'white'),
+
+  // Background
+  'background': map.get($primitives, 'white'),
+  'background-subtle': map.get($primitives, 'gray-100'),
+  'background-muted': map.get($primitives, 'gray-100'),
+  'background-elevated': map.get($primitives, 'white'),
+
+  // Border
+  'border': map.get($primitives, 'gray-300'),
+  'border-hover': map.get($primitives, 'gray-500'),
+
+  // Alpha variants (color.adjust replacement)
+  'primary-alpha-10': rgba(0, 0, 0, 0.1),
+  'primary-alpha-20': rgba(0, 0, 0, 0.2),
+  'secondary-alpha-10': rgba(74, 74, 74, 0.1),
+
+  'danger-alpha-20': rgba(230, 51, 18, 0.2),
+  'success-alpha-20': rgba(0, 135, 90, 0.2),
+
+  // Lightness variants (pre-calculated)
+  'background-muted-darken-3': #EBEBEB,
+  'background-subtle-darken-3': #EBEBEB,
+
+  // Accent light colors
+  'red-light': map.get($primitives, 'red-100'),
+  'green-light': map.get($primitives, 'green-100'),
+  'yellow-light': map.get($primitives, 'yellow-100'),
+  'blue-light': map.get($primitives, 'blue-100'),
+
+  // Accent light darken variants
+  'red-light-darken-5': #FCDDDA,
+  'green-light-darken-5': #D4EDE3,
+  'yellow-light-darken-5': #FFF0CC,
+  'blue-light-darken-5': #CDE0F0,
+
+  // Error/Success text variants (+20% lightness)
+  'danger-lighten-20': #F07A67,
+  'success-lighten-20': #33B07F,
+
+  // Focus ring
+  'focus-ring': map.get($primitives, 'blue-500'),
+);
+
+// ===================
+// Theme: Dark
+// ===================
+$color-set-dark: (
+  // Primary (inverted for dark mode)
+  'primary': map.get($primitives, 'white'),
+  'primary-hover': map.get($primitives, 'gray-100'),
+  'primary-active': map.get($primitives, 'gray-300'),
+
+  // Secondary
+  'secondary': map.get($primitives, 'gray-300'),
+  'secondary-hover': map.get($primitives, 'gray-100'),
+  'secondary-active': map.get($primitives, 'white'),
+
+  // Semantic - States
+  'danger': map.get($primitives, 'red-400'),
+  'danger-hover': #F87171,
+  'danger-active': #FCA5A5,
+
+  'success': map.get($primitives, 'green-400'),
+  'success-hover': #4ADE80,
+  'success-active': #86EFAC,
+
+  'warning': map.get($primitives, 'yellow-500'),
+  'warning-hover': #FCD34D,
+  'warning-active': #FDE68A,
+
+  'info': map.get($primitives, 'blue-400'),
+  'info-hover': #60A5FA,
+  'info-active': #93C5FD,
+
+  // Text
+  'text': map.get($primitives, 'white'),
+  'text-muted': map.get($primitives, 'gray-300'),
+  'text-subtle': map.get($primitives, 'gray-500'),
+  'text-inverse': map.get($primitives, 'black'),
+
+  // Background
+  'background': map.get($primitives, 'gray-900'),
+  'background-subtle': #0F0F0F,
+  'background-muted': #121212,
+  'background-elevated': #252525,
+
+  // Border
+  'border': map.get($primitives, 'gray-700'),
+  'border-hover': map.get($primitives, 'gray-500'),
+
+  // Alpha variants
+  'primary-alpha-10': rgba(255, 255, 255, 0.1),
+  'primary-alpha-20': rgba(255, 255, 255, 0.2),
+  'secondary-alpha-10': rgba(196, 196, 196, 0.1),
+
+  'danger-alpha-20': rgba(239, 68, 68, 0.2),
+  'success-alpha-20': rgba(34, 197, 94, 0.2),
+
+  // Lightness variants
+  'background-muted-darken-3': #0A0A0A,
+  'background-subtle-darken-3': #080808,
+
+  // Accent light colors (transparent for dark mode)
+  'red-light': rgba(239, 68, 68, 0.1),
+  'green-light': rgba(34, 197, 94, 0.1),
+  'yellow-light': rgba(255, 184, 0, 0.1),
+  'blue-light': rgba(59, 130, 246, 0.1),
+
+  // Accent light darken variants
+  'red-light-darken-5': rgba(239, 68, 68, 0.15),
+  'green-light-darken-5': rgba(34, 197, 94, 0.15),
+  'yellow-light-darken-5': rgba(255, 184, 0, 0.15),
+  'blue-light-darken-5': rgba(59, 130, 246, 0.15),
+
+  // Error/Success text variants (brighter in dark mode)
+  'danger-lighten-20': #F87171,
+  'success-lighten-20': #4ADE80,
+
+  // Focus ring
+  'focus-ring': map.get($primitives, 'blue-400'),
+);

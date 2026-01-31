@@ -1,0 +1,88 @@
+@use '../tokens' as tokens;
+
+.avatar {
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  font-family: tokens.$font-family-default;
+  font-weight: tokens.$font-weight-semibold;
+  line-height: tokens.$line-height-tight;
+  background-color: var(--avatar-bg, #{tokens.$primary-alpha-10});
+  color: var(--avatar-color, #{tokens.$primary});
+  border: 1px solid var(--avatar-border, #{tokens.$border});
+  transition:
+    background-color tokens.$transition-fast,
+    color tokens.$transition-fast,
+    border-color tokens.$transition-fast;
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='xs'] {
+    width: 20px;
+    height: 20px;
+    border-radius: tokens.$radius-4;
+    font-size: tokens.$font-size-12;
+  }
+
+  &[data-size='sm'] {
+    width: 24px;
+    height: 24px;
+    border-radius: tokens.$radius-4;
+    font-size: tokens.$font-size-13;
+  }
+
+  &[data-size='md'] {
+    width: 32px;
+    height: 32px;
+    border-radius: tokens.$radius-6;
+    font-size: tokens.$font-size-14;
+  }
+
+  &[data-size='lg'] {
+    width: 40px;
+    height: 40px;
+    border-radius: tokens.$radius-8;
+    font-size: tokens.$font-size-16;
+  }
+
+  &[data-size='xl'] {
+    width: 48px;
+    height: 48px;
+    border-radius: tokens.$radius-8;
+    font-size: tokens.$font-size-18;
+  }
+
+  // ===================
+  // Shapes
+  // ===================
+  &[data-shape='circle'] {
+    border-radius: tokens.$radius-full;
+  }
+
+  &[data-shape='square'] {
+    border-radius: tokens.$radius-4;
+  }
+
+  // ===================
+  // Image
+  // ===================
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  // ===================
+  // Fallback text
+  // ===================
+  &[data-fallback] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,116 @@
+// ===================
+// Color Tokens (CSS Custom Property References)
+// ===================
+// These SCSS variables reference CSS Custom Properties
+// for runtime theme switching support
+
+// ===================
+// Base Colors
+// ===================
+$black: #000000;
+$white: #FFFFFF;
+
+// ===================
+// Gray Palette (static, theme-independent)
+// ===================
+$gray-900: #1A1A1A;
+$gray-700: #4A4A4A;
+$gray-500: #8A8A8A;
+$gray-300: #C4C4C4;
+$gray-100: #F5F5F5;
+
+// ===================
+// Primary Palette (Brand)
+// ===================
+$primary: var(--wg-color-primary);
+$primary-hover: var(--wg-color-primary-hover);
+$primary-active: var(--wg-color-primary-active);
+
+// ===================
+// Secondary Palette
+// ===================
+$secondary: var(--wg-color-secondary);
+$secondary-hover: var(--wg-color-secondary-hover);
+$secondary-active: var(--wg-color-secondary-active);
+
+// ===================
+// Semantic Colors - States
+// ===================
+$danger: var(--wg-color-danger);
+$danger-hover: var(--wg-color-danger-hover);
+$danger-active: var(--wg-color-danger-active);
+
+$success: var(--wg-color-success);
+$success-hover: var(--wg-color-success-hover);
+$success-active: var(--wg-color-success-active);
+
+$warning: var(--wg-color-warning);
+$warning-hover: var(--wg-color-warning-hover);
+$warning-active: var(--wg-color-warning-active);
+
+$info: var(--wg-color-info);
+$info-hover: var(--wg-color-info-hover);
+$info-active: var(--wg-color-info-active);
+
+// ===================
+// Text Colors
+// ===================
+$text: var(--wg-color-text);
+$text-muted: var(--wg-color-text-muted);
+$text-subtle: var(--wg-color-text-subtle);
+$text-inverse: var(--wg-color-text-inverse);
+
+// ===================
+// Background Colors
+// ===================
+$background: var(--wg-color-background);
+$background-subtle: var(--wg-color-background-subtle);
+$background-muted: var(--wg-color-background-muted);
+$background-elevated: var(--wg-color-background-elevated);
+
+// ===================
+// Border Colors
+// ===================
+$border: var(--wg-color-border);
+$border-hover: var(--wg-color-border-hover);
+
+// ===================
+// Alpha Variants (color.adjust replacement)
+// ===================
+$primary-alpha-10: var(--wg-color-primary-alpha-10);
+$primary-alpha-20: var(--wg-color-primary-alpha-20);
+$secondary-alpha-10: var(--wg-color-secondary-alpha-10);
+
+$danger-alpha-20: var(--wg-color-danger-alpha-20);
+$success-alpha-20: var(--wg-color-success-alpha-20);
+
+// ===================
+// Lightness Variants (color.adjust replacement)
+// ===================
+$background-muted-darken-3: var(--wg-color-background-muted-darken-3);
+$background-subtle-darken-3: var(--wg-color-background-subtle-darken-3);
+
+// ===================
+// Accent Light Colors
+// ===================
+$red-light: var(--wg-color-red-light);
+$green-light: var(--wg-color-green-light);
+$yellow-light: var(--wg-color-yellow-light);
+$blue-light: var(--wg-color-blue-light);
+
+// Darken variants for active states
+$red-light-darken-5: var(--wg-color-red-light-darken-5);
+$green-light-darken-5: var(--wg-color-green-light-darken-5);
+$yellow-light-darken-5: var(--wg-color-yellow-light-darken-5);
+$blue-light-darken-5: var(--wg-color-blue-light-darken-5);
+
+// ===================
+// Error/Success Text Variants
+// ===================
+$danger-lighten-20: var(--wg-color-danger-lighten-20);
+$success-lighten-20: var(--wg-color-success-lighten-20);
+
+// ===================
+// Focus Ring
+// ===================
+$focus-ring: var(--wg-color-focus-ring);

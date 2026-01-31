@@ -1,0 +1,217 @@
+@use '../tokens' as tokens;
+
+.icon-btn {
+  // Reset
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: tokens.$radius-8;
+  font-family: tokens.$font-family-default;
+  font-weight: tokens.$font-weight-medium;
+  line-height: tokens.$line-height-tight;
+  text-decoration: none;
+  user-select: none;
+  transition:
+    background-color tokens.$transition-fast,
+    color tokens.$transition-fast,
+    border-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+
+  // CSS custom properties for variant colors
+  background-color: var(--icon-btn-bg, transparent);
+  color: var(--icon-btn-color, inherit);
+  border: 1px solid var(--icon-btn-border, transparent);
+
+  // Focus state
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: tokens.$focus-ring-offset;
+  }
+
+  // Disabled state
+  &:disabled,
+  &[data-state='disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='xs'] {
+    width: 24px;
+    height: 24px;
+    font-size: tokens.$font-size-12;
+  }
+
+  &[data-size='sm'] {
+    width: 32px;
+    height: 32px;
+    font-size: tokens.$font-size-14;
+  }
+
+  &[data-size='md'] {
+    width: 40px;
+    height: 40px;
+    font-size: tokens.$font-size-16;
+  }
+
+  &[data-size='lg'] {
+    width: 48px;
+    height: 48px;
+    font-size: tokens.$font-size-18;
+  }
+
+  // ===================
+  // Shapes
+  // ===================
+  &[data-shape='square'] {
+    border-radius: tokens.$radius-8;
+  }
+
+  &[data-shape='circle'] {
+    border-radius: tokens.$radius-full;
+  }
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Filled variant
+  &[data-variant='filled'] {
+    &[data-color='primary'] {
+      --icon-btn-bg: #{tokens.$primary};
+      --icon-btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$primary-hover};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$primary-active};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --icon-btn-bg: #{tokens.$secondary};
+      --icon-btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$secondary-hover};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$secondary-active};
+      }
+    }
+
+    &[data-color='danger'] {
+      --icon-btn-bg: #{tokens.$danger};
+      --icon-btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$danger-hover};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$danger-active};
+      }
+    }
+  }
+
+  // Outline variant
+  &[data-variant='outline'] {
+    --icon-btn-bg: transparent;
+
+    &[data-color='primary'] {
+      --icon-btn-border: #{tokens.$primary};
+      --icon-btn-color: #{tokens.$primary};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$primary-alpha-10};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$primary-alpha-20};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --icon-btn-border: #{tokens.$border};
+      --icon-btn-color: #{tokens.$text};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$background-muted};
+        --icon-btn-border: #{tokens.$border-hover};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$background-muted-darken-3};
+      }
+    }
+
+    &[data-color='danger'] {
+      --icon-btn-border: #{tokens.$danger};
+      --icon-btn-color: #{tokens.$danger};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$red-light};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$red-light-darken-5};
+      }
+    }
+  }
+
+  // Ghost variant
+  &[data-variant='ghost'] {
+    --icon-btn-bg: transparent;
+    --icon-btn-border: transparent;
+
+    &[data-color='primary'] {
+      --icon-btn-color: #{tokens.$primary};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$primary-alpha-10};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$primary-alpha-20};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --icon-btn-color: #{tokens.$text};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$background-muted};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$background-muted-darken-3};
+      }
+    }
+
+    &[data-color='danger'] {
+      --icon-btn-color: #{tokens.$danger};
+
+      &:hover:not(:disabled) {
+        --icon-btn-bg: #{tokens.$red-light};
+      }
+
+      &:active:not(:disabled) {
+        --icon-btn-bg: #{tokens.$red-light-darken-5};
+      }
+    }
+  }
+}

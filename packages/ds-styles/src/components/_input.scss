@@ -1,0 +1,194 @@
+@use '../tokens' as tokens;
+
+.input {
+  // Reset
+  appearance: none;
+  margin: 0;
+  padding: 0;
+
+  // Base styles
+  display: block;
+  width: 100%;
+  font-family: tokens.$font-family-default;
+  font-size: tokens.$font-size-14;
+  line-height: tokens.$line-height-normal;
+  background-color: var(--input-bg, #{tokens.$background});
+  color: tokens.$text;
+  border-radius: tokens.$radius-8;
+  transition:
+    background-color tokens.$transition-fast,
+    border-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+
+  // Default state
+  border: 1px solid var(--input-border, #{tokens.$border});
+
+  &::placeholder {
+    color: tokens.$text-subtle;
+  }
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Outline variant (default)
+  &[data-variant='outline'] {
+    --input-bg: #{tokens.$background};
+    --input-border: #{tokens.$border};
+
+    &:hover:not(:disabled) {
+      --input-border: #{tokens.$border-hover};
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      --input-border: #{tokens.$primary};
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+
+    &[data-state='error'] {
+      --input-border: #{tokens.$danger};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 0 0 2px #{tokens.$danger-alpha-20};
+      }
+    }
+
+    &[data-state='success'] {
+      --input-border: #{tokens.$success};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 0 0 2px #{tokens.$success-alpha-20};
+      }
+    }
+  }
+
+  // Filled variant
+  &[data-variant='filled'] {
+    --input-bg: #{tokens.$background-subtle};
+    --input-border: transparent;
+
+    &:hover:not(:disabled) {
+      --input-bg: #{tokens.$background-subtle-darken-3};
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      --input-border: #{tokens.$primary};
+      --input-bg: #{tokens.$background};
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+
+    &[data-state='error'] {
+      --input-border: #{tokens.$danger};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 0 0 2px #{tokens.$danger-alpha-20};
+      }
+    }
+
+    &[data-state='success'] {
+      --input-border: #{tokens.$success};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 0 0 2px #{tokens.$success-alpha-20};
+      }
+    }
+  }
+
+  // Underline variant
+  &[data-variant='underline'] {
+    --input-bg: transparent;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--input-border, #{tokens.$border});
+    border-radius: 0;
+    padding-bottom: tokens.$spacing-2;
+
+    &:hover:not(:disabled) {
+      --input-border: #{tokens.$border-hover};
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      --input-border: #{tokens.$primary};
+      box-shadow: 0 1px 0 0 var(--input-border, #{tokens.$primary});
+    }
+
+    &[data-state='error'] {
+      --input-border: #{tokens.$danger};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 1px 0 0 var(--input-border, #{tokens.$danger});
+      }
+    }
+
+    &[data-state='success'] {
+      --input-border: #{tokens.$success};
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: 0 1px 0 0 var(--input-border, #{tokens.$success});
+      }
+    }
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    height: 32px;
+    padding: tokens.$spacing-1 tokens.$spacing-3;
+    font-size: tokens.$font-size-13;
+  }
+
+  &[data-size='md'] {
+    height: 40px;
+    padding: tokens.$spacing-2 tokens.$spacing-4;
+    font-size: tokens.$font-size-14;
+  }
+
+  &[data-size='lg'] {
+    height: 48px;
+    padding: tokens.$spacing-3 tokens.$spacing-4;
+    font-size: tokens.$font-size-16;
+  }
+
+  // ===================
+  // States
+  // ===================
+
+  // Disabled state
+  &:disabled,
+  &[data-state='disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: tokens.$background-muted;
+  }
+
+  // Error state
+  &[data-state='error'] {
+    --input-border: #{tokens.$danger};
+
+    &::placeholder {
+      color: #{tokens.$danger-lighten-20};
+    }
+  }
+
+  // Success state
+  &[data-state='success'] {
+    --input-border: #{tokens.$success};
+
+    &::placeholder {
+      color: #{tokens.$success-lighten-20};
+    }
+  }
+}

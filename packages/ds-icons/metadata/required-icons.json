@@ -1,0 +1,94 @@
+{
+  "categories": [
+    {
+      "name": "Navigation & Layout",
+      "description": "사용자의 이동 및 구조 파악을 돕는 필수 아이콘",
+      "icons": [
+        { "name": "home", "description": "메인 대시보드/홈 이동" },
+        { "name": "menu", "description": "사이드바/전체 메뉴 열기" },
+        { "name": "arrow-left", "description": "이전 페이지" },
+        { "name": "arrow-right", "description": "다음 페이지/상세 보기" },
+        { "name": "chevron-down", "description": "드롭다운/아코디언 확장" },
+        { "name": "search", "description": "콘텐츠 검색" }
+      ]
+    },
+    {
+      "name": "Actions",
+      "description": "주요 인터랙션 및 기능 실행 아이콘",
+      "icons": [
+        { "name": "plus", "description": "새 항목 추가/생성" },
+        { "name": "pencil", "description": "편집/수정" },
+        { "name": "trash", "description": "삭제/휴지통" },
+        { "name": "download", "description": "파일 다운로드" },
+        { "name": "share", "description": "외부 공유" },
+        { "name": "refresh", "description": "데이터 새로고침" },
+        { "name": "close", "description": "닫기/취소" }
+      ]
+    },
+    {
+      "name": "Status & Feedback",
+      "description": "시스템의 상태와 피드백을 전달하는 아이콘",
+      "icons": [
+        { "name": "info", "description": "일반 정보 안내" },
+        { "name": "check-circle", "description": "성공/완료" },
+        { "name": "alert-triangle", "description": "경고/주의" },
+        { "name": "alert-circle", "description": "오류/실패" },
+        { "name": "help-circle", "description": "도움말/FAQ" },
+        { "name": "bell", "description": "알림 센터" }
+      ]
+    },
+    {
+      "name": "Users & Account",
+      "description": "사용자 및 계정 관련 아이콘",
+      "icons": [
+        { "name": "user", "description": "프로필/사용자 정보" },
+        { "name": "user-group", "description": "팀/그룹" },
+        { "name": "settings", "description": "설정/환경설정" },
+        { "name": "lock", "description": "보안/비밀번호" },
+        { "name": "log-out", "description": "로그아웃" }
+      ]
+    },
+    {
+      "name": "Communication & Social",
+      "description": "연락 및 소셜 미디어 연결 아이콘",
+      "icons": [
+        { "name": "mail", "description": "이메일/메시지" },
+        { "name": "phone", "description": "전화/연락처" },
+        { "name": "link", "description": "링크 복사" },
+        { "name": "external-link", "description": "외부 페이지 이동" },
+        { "name": "message-square", "description": "채팅/댓글" },
+        { "name": "github", "description": "GitHub 저장소" },
+        { "name": "twitter", "description": "X (구 트위터)" },
+        { "name": "instagram", "description": "인스타그램" }
+      ]
+    },
+    {
+      "name": "Content & Media",
+      "description": "콘텐츠 관리 및 미디어 제어 아이콘",
+      "icons": [
+        { "name": "calendar", "description": "날짜 선택/일정" },
+        { "name": "clock", "description": "시간/최근 항목" },
+        { "name": "image", "description": "이미지/갤러리" },
+        { "name": "file-text", "description": "문서/텍스트 파일" },
+        { "name": "play", "description": "비디오/오디오 재생" },
+        { "name": "pause", "description": "일시 정지" },
+        { "name": "volume-2", "description": "소리 켜기" },
+        { "name": "eye", "description": "비밀번호 보기/조회수" },
+        { "name": "eye-off", "description": "비밀번호 숨기기" }
+      ]
+    },
+    {
+      "name": "E-commerce & Essential",
+      "description": "상거래 및 기타 필수 인터페이스 아이콘",
+      "icons": [
+        { "name": "shopping-cart", "description": "장바구니" },
+        { "name": "shopping-bag", "description": "구매 목록" },
+        { "name": "credit-card", "description": "결제/카드" },
+        { "name": "tag", "description": "가격/태그" },
+        { "name": "star", "description": "즐겨찾기/별점" },
+        { "name": "heart", "description": "좋아요/찜" },
+        { "name": "copy", "description": "텍스트/코드 복사" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+name: Test & Coverage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - name: Run tests with coverage
+        run: pnpm test --coverage
+
+      - name: Generate coverage badges
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: jpb06/coverage-badges-action@v2
+        with:
+          coverage-summary-path: ./coverage/coverage-summary.json
+          branches: main

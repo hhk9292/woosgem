@@ -1,0 +1,192 @@
+@use '../tokens' as tokens;
+
+// Hidden native checkbox input
+input[type='checkbox'].checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Custom checkbox wrapper and styling
+.checkbox {
+  // Reset
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: tokens.$radius-4;
+  transition:
+    background-color tokens.$transition-fast,
+    border-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+
+  // Default state
+  background-color: tokens.$background;
+  border: 1px solid tokens.$border;
+  color: transparent;
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='sm'] {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+  }
+
+  &[data-size='md'] {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  &[data-size='lg'] {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  // ===================
+  // States
+  // ===================
+
+  // Default state
+  &[data-state='unchecked'] {
+    background-color: tokens.$background;
+    border-color: tokens.$border;
+    color: transparent;
+
+    &:hover:not(:disabled) {
+      border-color: tokens.$border-hover;
+    }
+
+    &:focus-visible,
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+  }
+
+  // Checked state
+  &[data-state='checked'] {
+    background-color: tokens.$primary;
+    border-color: tokens.$primary;
+    color: tokens.$text-inverse;
+
+    &:hover:not(:disabled) {
+      background-color: tokens.$primary-hover;
+      border-color: tokens.$primary-hover;
+    }
+
+    &:active:not(:disabled) {
+      background-color: tokens.$primary-active;
+      border-color: tokens.$primary-active;
+    }
+
+    &:focus-visible,
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+
+    &::after {
+      content: '';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+  }
+
+  // Indeterminate state
+  &[data-state='indeterminate'] {
+    background-color: tokens.$primary;
+    border-color: tokens.$primary;
+    color: tokens.$text-inverse;
+
+    &:hover:not(:disabled) {
+      background-color: tokens.$primary-hover;
+      border-color: tokens.$primary-hover;
+    }
+
+    &:active:not(:disabled) {
+      background-color: tokens.$primary-active;
+      border-color: tokens.$primary-active;
+    }
+
+    &:focus-visible,
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
+    }
+
+    &::after {
+      content: '';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      font-weight: bold;
+    }
+  }
+
+  // Disabled state
+  &[data-state='disabled'],
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: tokens.$background-muted;
+    border-color: tokens.$border;
+
+    &:hover {
+      background-color: tokens.$background-muted;
+      border-color: tokens.$border;
+    }
+  }
+
+  // Error state (optional, can be combined with other states)
+  &[data-error] {
+    border-color: tokens.$danger;
+
+    &[data-state='unchecked']:hover:not(:disabled) {
+      border-color: tokens.$danger;
+    }
+
+    &:focus-visible,
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #{tokens.$danger-alpha-20};
+    }
+  }
+}
+
+// Label styling when used with checkbox
+label.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: tokens.$spacing-2;
+  cursor: pointer;
+  user-select: none;
+  font-size: tokens.$font-size-14;
+  color: tokens.$text;
+
+  &:hover {
+    .checkbox[data-state='unchecked'] {
+      border-color: tokens.$border-hover;
+    }
+  }
+}

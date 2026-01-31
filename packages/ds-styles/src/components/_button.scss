@@ -1,0 +1,396 @@
+@use '../tokens' as tokens;
+
+.btn {
+  // Reset
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: tokens.$spacing-2;
+  border-radius: tokens.$radius-8;
+  font-family: tokens.$font-family-default;
+  font-weight: tokens.$font-weight-medium;
+  line-height: tokens.$line-height-tight;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  transition:
+    background-color tokens.$transition-fast,
+    color tokens.$transition-fast,
+    border-color tokens.$transition-fast,
+    box-shadow tokens.$transition-fast;
+
+  // CSS custom properties for variant colors
+  background-color: var(--btn-bg, transparent);
+  color: var(--btn-color, inherit);
+  border: 1px solid var(--btn-border, transparent);
+
+  // Focus state
+  &:focus-visible {
+    outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+    outline-offset: tokens.$focus-ring-offset;
+  }
+
+  // Disabled state
+  &:disabled,
+  &[data-state='disabled'],
+  &[data-state='loading'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // Loading state
+  &[data-state='loading'] {
+    position: relative;
+    color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1em;
+      height: 1em;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: tokens.$radius-full;
+      animation: btn-spin 0.6s linear infinite;
+      color: var(--btn-color, inherit);
+    }
+  }
+
+  // Full width support
+  &[data-full-width] {
+    width: 100%;
+  }
+
+  // ===================
+  // Sizes
+  // ===================
+  &[data-size='xs'] {
+    height: 24px;
+    padding: tokens.$spacing-0 tokens.$spacing-2;
+    font-size: tokens.$font-size-12;
+  }
+
+  &[data-size='sm'] {
+    height: 32px;
+    padding: tokens.$spacing-1 tokens.$spacing-3;
+    font-size: tokens.$font-size-13;
+  }
+
+  &[data-size='md'] {
+    height: 40px;
+    padding: tokens.$spacing-2 tokens.$spacing-4;
+    font-size: tokens.$font-size-14;
+  }
+
+  &[data-size='lg'] {
+    height: 48px;
+    padding: tokens.$spacing-3 tokens.$spacing-6;
+    font-size: tokens.$font-size-16;
+  }
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Filled variant
+  &[data-variant='filled'] {
+    &[data-color='primary'] {
+      --btn-bg: #{tokens.$primary};
+      --btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$primary-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$primary-active};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --btn-bg: #{tokens.$secondary};
+      --btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$secondary-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$secondary-active};
+      }
+    }
+
+    &[data-color='danger'] {
+      --btn-bg: #{tokens.$danger};
+      --btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$danger-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$danger-active};
+      }
+    }
+
+    &[data-color='success'] {
+      --btn-bg: #{tokens.$success};
+      --btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$success-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$success-active};
+      }
+    }
+
+    &[data-color='warning'] {
+      --btn-bg: #{tokens.$warning};
+      --btn-color: #{tokens.$text};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$warning-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$warning-active};
+      }
+    }
+
+    &[data-color='info'] {
+      --btn-bg: #{tokens.$info};
+      --btn-color: #{tokens.$text-inverse};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$info-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$info-active};
+      }
+    }
+  }
+
+  // Outline variant
+  &[data-variant='outline'] {
+    --btn-bg: transparent;
+
+    &[data-color='primary'] {
+      --btn-border: #{tokens.$primary};
+      --btn-color: #{tokens.$primary};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$primary-alpha-10};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$primary-alpha-20};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --btn-border: #{tokens.$border};
+      --btn-color: #{tokens.$text};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$background-muted};
+        --btn-border: #{tokens.$border-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$background-muted-darken-3};
+      }
+    }
+
+    &[data-color='danger'] {
+      --btn-border: #{tokens.$danger};
+      --btn-color: #{tokens.$danger};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$red-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$red-light-darken-5};
+      }
+    }
+
+    &[data-color='success'] {
+      --btn-border: #{tokens.$success};
+      --btn-color: #{tokens.$success};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$green-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$green-light-darken-5};
+      }
+    }
+
+    &[data-color='warning'] {
+      --btn-border: #{tokens.$warning};
+      --btn-color: #{tokens.$warning};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$yellow-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$yellow-light-darken-5};
+      }
+    }
+
+    &[data-color='info'] {
+      --btn-border: #{tokens.$info};
+      --btn-color: #{tokens.$info};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$blue-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$blue-light-darken-5};
+      }
+    }
+  }
+
+  // Ghost variant
+  &[data-variant='ghost'] {
+    --btn-bg: transparent;
+    --btn-border: transparent;
+
+    &[data-color='primary'] {
+      --btn-color: #{tokens.$primary};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$primary-alpha-10};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$primary-alpha-20};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --btn-color: #{tokens.$text};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$background-muted};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$background-muted-darken-3};
+      }
+    }
+
+    &[data-color='danger'] {
+      --btn-color: #{tokens.$danger};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$red-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$red-light-darken-5};
+      }
+    }
+
+    &[data-color='success'] {
+      --btn-color: #{tokens.$success};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$green-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$green-light-darken-5};
+      }
+    }
+
+    &[data-color='warning'] {
+      --btn-color: #{tokens.$warning};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$yellow-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$yellow-light-darken-5};
+      }
+    }
+
+    &[data-color='info'] {
+      --btn-color: #{tokens.$info};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$blue-light};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-bg: #{tokens.$blue-light-darken-5};
+      }
+    }
+  }
+
+  // Link variant
+  &[data-variant='link'] {
+    --btn-bg: transparent;
+    --btn-border: transparent;
+    --btn-color: #{tokens.$primary};
+    padding: 0;
+    height: auto;
+    text-decoration: underline;
+
+    &:hover:not(:disabled):not([data-state='loading']) {
+      --btn-color: #{tokens.$primary-hover};
+    }
+
+    &:active:not(:disabled):not([data-state='loading']) {
+      --btn-color: #{tokens.$primary-active};
+    }
+
+    &[data-color='danger'] {
+      --btn-color: #{tokens.$danger};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-color: #{tokens.$danger-hover};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-color: #{tokens.$danger-active};
+      }
+    }
+
+    &[data-color='secondary'] {
+      --btn-color: #{tokens.$text-muted};
+
+      &:hover:not(:disabled):not([data-state='loading']) {
+        --btn-color: #{tokens.$text};
+      }
+
+      &:active:not(:disabled):not([data-state='loading']) {
+        --btn-color: #{tokens.$text};
+      }
+    }
+  }
+}
+
+@keyframes btn-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

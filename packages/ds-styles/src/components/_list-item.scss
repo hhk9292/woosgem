@@ -1,0 +1,108 @@
+@use '../tokens' as tokens;
+
+.list-item {
+  // Base styles
+  display: flex;
+  align-items: center;
+  gap: tokens.$spacing-3;
+  padding: tokens.$spacing-3 tokens.$spacing-4;
+  background-color: var(--list-item-bg, transparent);
+  color: var(--list-item-color, #{tokens.$text});
+  border: none;
+  border-bottom: 1px solid var(--list-item-border, transparent);
+  cursor: default;
+  font-family: tokens.$font-family-default;
+  font-size: tokens.$font-size-14;
+  line-height: tokens.$line-height-normal;
+  transition:
+    background-color tokens.$transition-fast,
+    color tokens.$transition-fast,
+    border-color tokens.$transition-fast;
+
+  // Remove button default styles if used as button
+  &[type='button'] {
+    appearance: none;
+    margin: 0;
+    padding: tokens.$spacing-3 tokens.$spacing-4;
+  }
+
+  // ===================
+  // Divider
+  // ===================
+  &[data-divider] {
+    border-bottom: 1px solid #{tokens.$border};
+  }
+
+  // ===================
+  // States
+  // ===================
+  &:disabled,
+  &[data-state='disabled'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &[data-state='selected'] {
+    --list-item-bg: #{tokens.$primary-alpha-10};
+    --list-item-color: #{tokens.$primary};
+  }
+
+  // ===================
+  // Variants
+  // ===================
+
+  // Default variant (no interaction)
+  &[data-variant='default'] {
+    &:disabled,
+    &[data-state='disabled'] {
+      --list-item-color: #{tokens.$text-muted};
+    }
+  }
+
+  // Interactive variant
+  &[data-variant='interactive'] {
+    cursor: pointer;
+
+    &:not(:disabled):not([data-state='disabled']) {
+      &:hover {
+        --list-item-bg: #{tokens.$background-muted};
+      }
+
+      &:active {
+        --list-item-bg: #{tokens.$background-subtle-darken-3};
+      }
+
+      &:focus-visible {
+        outline: tokens.$focus-ring-width solid tokens.$focus-ring-color;
+        outline-offset: -#{tokens.$focus-ring-width};
+      }
+    }
+  }
+
+  // ===================
+  // Internal slots
+  // ===================
+
+  // Leading slot (icon, avatar, etc.)
+  &__leading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  // Content slot (text content)
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  // Trailing slot (badge, icon, etc.)
+  &__trailing {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    gap: tokens.$spacing-2;
+  }
+}
