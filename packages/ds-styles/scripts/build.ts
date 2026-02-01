@@ -1,13 +1,15 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
 /**
  * Build script for @woosgem/styles
  * Compiles SCSS to CSS with source maps and minification
  */
 
-const sass = require('sass');
-const fs = require('fs');
-const path = require('path');
+import * as sass from 'sass';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const srcDir = path.join(__dirname, '../src');
 const distDir = path.join(__dirname, '../dist');
 
@@ -16,13 +18,15 @@ if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
+interface CompileOptions {
+  minify?: boolean;
+  sourceMap?: boolean;
+}
+
 /**
  * Compile a SCSS file to CSS
- * @param {string} inputPath - Path to input SCSS file
- * @param {string} outputPath - Path to output CSS file
- * @param {object} options - Compilation options
  */
-function compile(inputPath, outputPath, options = {}) {
+function compile(inputPath: string, outputPath: string, options: CompileOptions = {}): boolean {
   const { minify = false, sourceMap = true } = options;
 
   try {
@@ -39,10 +43,7 @@ function compile(inputPath, outputPath, options = {}) {
       css += `\n/*# sourceMappingURL=${mapFileName} */`;
 
       // Write source map
-      fs.writeFileSync(
-        outputPath + '.map',
-        JSON.stringify(result.sourceMap)
-      );
+      fs.writeFileSync(outputPath + '.map', JSON.stringify(result.sourceMap));
     }
 
     fs.writeFileSync(outputPath, css);
@@ -50,46 +51,52 @@ function compile(inputPath, outputPath, options = {}) {
 
     return true;
   } catch (error) {
-    console.error(`[ERROR] ${inputPath}: ${error.message}`);
+    console.error(`[ERROR] ${inputPath}: ${(error as Error).message}`);
     return false;
   }
 }
 
+interface BuildConfig {
+  input: string;
+  output: string;
+  options: CompileOptions;
+}
+
 // Build configurations
-const builds = [
+const builds: BuildConfig[] = [
   // Main bundle (dev)
   {
     input: path.join(srcDir, 'index.scss'),
     output: path.join(distDir, 'index.css'),
-    options: { minify: false, sourceMap: true }
+    options: { minify: false, sourceMap: true },
   },
   // Main bundle (minified)
   {
     input: path.join(srcDir, 'index.scss'),
     output: path.join(distDir, 'index.min.css'),
-    options: { minify: true, sourceMap: true }
+    options: { minify: true, sourceMap: true },
   },
   // Theme: Default
   {
     input: path.join(srcDir, 'themes/default.scss'),
     output: path.join(distDir, 'themes/default.css'),
-    options: { minify: false, sourceMap: true }
+    options: { minify: false, sourceMap: true },
   },
   {
     input: path.join(srcDir, 'themes/default.scss'),
     output: path.join(distDir, 'themes/default.min.css'),
-    options: { minify: true, sourceMap: false }
+    options: { minify: true, sourceMap: false },
   },
   // Theme: Dark
   {
     input: path.join(srcDir, 'themes/dark.scss'),
     output: path.join(distDir, 'themes/dark.css'),
-    options: { minify: false, sourceMap: true }
+    options: { minify: false, sourceMap: true },
   },
   {
     input: path.join(srcDir, 'themes/dark.scss'),
     output: path.join(distDir, 'themes/dark.min.css'),
-    options: { minify: true, sourceMap: false }
+    options: { minify: true, sourceMap: false },
   },
 ];
 

@@ -27,14 +27,14 @@ const child = spawn('npx', ['vitest', ...args], {
   stdio: ['inherit', 'pipe', 'pipe'],
 });
 
-child.stdout.pipe(writeStream);
-child.stderr.pipe(writeStream);
+child.stdout?.pipe(writeStream);
+child.stderr?.pipe(writeStream);
 
 // Also log to console
-child.stdout.on('data', (data) => process.stdout.write(data));
-child.stderr.on('data', (data) => process.stderr.write(data));
+child.stdout?.on('data', (data: Buffer) => process.stdout.write(data));
+child.stderr?.on('data', (data: Buffer) => process.stderr.write(data));
 
 child.on('close', (code) => {
   writeStream.end();
-  process.exit(code);
+  process.exit(code ?? 1);
 });

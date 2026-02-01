@@ -5,28 +5,39 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '..');
 
-function readJSON(filePath) {
+interface CoverageSummary {
+  total: {
+    lines: { pct: number };
+  };
+}
+
+interface TestResults {
+  numPassedTests?: number;
+  numFailedTests?: number;
+}
+
+function readJSON<T>(filePath: string): T | null {
   if (!existsSync(filePath)) {
     console.warn(`Warning: ${filePath} not found`);
     return null;
   }
-  return JSON.parse(readFileSync(filePath, 'utf-8'));
+  return JSON.parse(readFileSync(filePath, 'utf-8')) as T;
 }
 
-function generateBadgeUrl(label, value, color) {
+function generateBadgeUrl(label: string, value: string, color: string): string {
   const encodedLabel = encodeURIComponent(label);
   const encodedValue = encodeURIComponent(value);
   return `https://img.shields.io/badge/${encodedLabel}-${encodedValue}-${color}`;
 }
 
-function main() {
+function main(): void {
   const coveragePath = resolve(rootDir, 'coverage/coverage-summary.json');
   const testResultsPath = resolve(rootDir, 'coverage/test-results.json');
   const readmePath = resolve(rootDir, 'README.md');
   const reportPath = resolve(rootDir, 'docs/test-report.md');
 
-  const coverage = readJSON(coveragePath);
-  const testResults = readJSON(testResultsPath);
+  const coverage = readJSON<CoverageSummary>(coveragePath);
+  const testResults = readJSON<TestResults>(testResultsPath);
 
   if (!coverage && !testResults) {
     console.log('No coverage or test results found. Run tests first.');
@@ -37,19 +48,20 @@ function main() {
   let coveragePercent = 62;
 
   if (testResults) {
-    testsPassed = testResults.numPassedTests || 0;
-    const failed = testResults.numFailedTests || 0;
-    
+    testsPassed = testResults.numPassedTests ?? 0;
+    const failed = testResults.numFailedTests ?? 0;
+
     console.log(`Tests: ${testsPassed} passed, ${failed} failed`);
   }
 
-  if (coverage && coverage.total) {
+  if (coverage?.total) {
     coveragePercent = Math.round(coverage.total.lines.pct);
     console.log(`Coverage: ${coveragePercent}%`);
   }
 
   const testsColor = 'brightgreen';
-  const coverageColor = coveragePercent >= 60 ? 'brightgreen' : coveragePercent >= 40 ? 'yellow' : 'red';
+  const coverageColor =
+    coveragePercent >= 60 ? 'brightgreen' : coveragePercent >= 40 ? 'yellow' : 'red';
 
   const testsBadge = generateBadgeUrl('tests', `${testsPassed} passed`, testsColor);
   const coverageBadge = generateBadgeUrl('coverage', `${coveragePercent}%`, coverageColor);
@@ -69,7 +81,10 @@ function main() {
     );
 
     // Status 테이블 제거 (이미 옮겼으므로)
-    readme = readme.replace(/\n## Status\n\n\| Metric \| Value \| Target \|\n\|--------\|-------\|--------\|\n\| Tests \| .+ \| - \|\n\| Coverage \| .+ \| 60% \|\n\| Components \| .+ \| 25 \|\n/, '');
+    readme = readme.replace(
+      /\n## Status\n\n\| Metric \| Value \| Target \|\n\|--------\|-------\|--------\|\n\| Tests \| .+ \| - \|\n\| Coverage \| .+ \| 60% \|\n\| Components \| .+ \| 25 \|\n/,
+      ''
+    );
 
     writeFileSync(readmePath, readme);
     console.log('README.md updated (badges only)');
@@ -79,10 +94,7 @@ function main() {
   if (existsSync(reportPath)) {
     let report = readFileSync(reportPath, 'utf-8');
 
-    report = report.replace(
-      /\| Tests \| .+ \| - \|/,
-      `| Tests | ${testsPassed} passed | - |`
-    );
+    report = report.replace(/\| Tests \| .+ \| - \|/, `| Tests | ${testsPassed} passed | - |`);
 
     report = report.replace(
       /\| Coverage \| .+ \| 60% \|/,
@@ -91,9 +103,11 @@ function main() {
 
     // 통합 현황 업데이트
     if (testResults) {
-      const passed = testResults.numPassedTests || 0;
-      const totalCoverage = coverage?.total?.lines?.pct ? `${Math.round(coverage.total.lines.pct)}%` : '-';
-      
+      const passed = testResults.numPassedTests ?? 0;
+      const totalCoverage = coverage?.total?.lines?.pct
+        ? `${Math.round(coverage.total.lines.pct)}%`
+        : '-';
+
       report = report.replace(
         /\| @woosgem\/ds-test \| .+ \| .+ \|/,
         `| @woosgem/ds-test | ${passed} passed | ${totalCoverage} |`

@@ -16,7 +16,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:log": "node scripts/test-with-log.js"
+    "test:log": "tsx scripts/test-with-log.ts"
   },
   "dependencies": {
     "@woosgem/ds-core": "workspace:*",
