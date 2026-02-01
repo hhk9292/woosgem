@@ -6,10 +6,10 @@
   align-items: center;
   gap: tokens.$spacing-3;
   padding: tokens.$spacing-3 tokens.$spacing-4;
-  background-color: var(--list-item-bg, transparent);
-  color: var(--list-item-color, #{tokens.$text});
+  background-color: var(--wg-list-item-bg, transparent);
+  color: var(--wg-list-item-color, #{tokens.$text});
   border: none;
-  border-bottom: 1px solid var(--list-item-border, transparent);
+  border-bottom: 1px solid var(--wg-list-item-border, transparent);
   cursor: default;
   font-family: tokens.$font-family-default;
   font-size: tokens.$font-size-14;
@@ -43,8 +43,8 @@
   }
 
   &[data-state='selected'] {
-    --list-item-bg: #{tokens.$primary-alpha-10};
-    --list-item-color: #{tokens.$primary};
+    --wg-list-item-bg: #{tokens.$primary-alpha-10};
+    --wg-list-item-color: #{tokens.$primary};
   }
 
   // ===================
@@ -55,7 +55,7 @@
   &[data-variant='default'] {
     &:disabled,
     &[data-state='disabled'] {
-      --list-item-color: #{tokens.$text-muted};
+      --wg-list-item-color: #{tokens.$text-muted};
     }
   }
 
@@ -65,11 +65,11 @@
 
     &:not(:disabled):not([data-state='disabled']) {
       &:hover {
-        --list-item-bg: #{tokens.$background-muted};
+        --wg-list-item-bg: #{tokens.$background-muted};
       }
 
       &:active {
-        --list-item-bg: #{tokens.$background-subtle-darken-3};
+        --wg-list-item-bg: #{tokens.$background-subtle-darken-3};
       }
 
       &:focus-visible {

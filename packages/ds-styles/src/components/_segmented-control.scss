@@ -5,8 +5,8 @@
   display: inline-flex;
   gap: tokens.$spacing-1;
   padding: tokens.$spacing-1;
-  background-color: var(--segmented-bg, #{tokens.$background-muted});
-  border: 1px solid var(--segmented-border, #{tokens.$border});
+  background-color: var(--wg-segmented-bg, #{tokens.$background-muted});
+  border: 1px solid var(--wg-segmented-border, #{tokens.$border});
   border-radius: tokens.$radius-8;
   cursor: default;
 
@@ -79,8 +79,8 @@
     box-shadow tokens.$transition-fast;
 
   // CSS custom properties for colors
-  color: var(--item-color, #{tokens.$text-muted});
-  background-color: var(--item-bg, transparent);
+  color: var(--wg-segment-item-color, #{tokens.$text-muted});
+  background-color: var(--wg-segment-item-bg, transparent);
 
   // Focus state
   &:focus-visible {
@@ -97,18 +97,18 @@
 
   // Unselected hover state
   &:not([data-state='selected']):hover:not(:disabled):not([data-state='disabled']) {
-    --item-bg: #{tokens.$background-subtle};
+    --wg-segment-item-bg: #{tokens.$background-subtle};
   }
 
   // Selected state
   &[data-state='selected'] {
-    --item-bg: #{tokens.$background};
-    --item-color: #{tokens.$text};
+    --wg-segment-item-bg: #{tokens.$background};
+    --wg-segment-item-color: #{tokens.$text};
     box-shadow: tokens.$shadow-sm;
 
     &:not(:disabled):not([data-state='disabled']) {
       &:hover {
-        --item-bg: #{tokens.$background};
+        --wg-segment-item-bg: #{tokens.$background};
       }
 
       &:active {

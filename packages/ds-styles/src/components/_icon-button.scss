@@ -27,9 +27,9 @@
     box-shadow tokens.$transition-fast;
 
   // CSS custom properties for variant colors
-  background-color: var(--icon-btn-bg, transparent);
-  color: var(--icon-btn-color, inherit);
-  border: 1px solid var(--icon-btn-border, transparent);
+  background-color: var(--wg-icon-btn-bg, transparent);
+  color: var(--wg-icon-btn-color, inherit);
+  border: 1px solid var(--wg-icon-btn-border, transparent);
 
   // Focus state
   &:focus-visible {
@@ -44,6 +44,12 @@
     opacity: 0.5;
   }
 
+  // SVG 기본 스타일
+  svg,
+  .icon {
+    shape-rendering: geometricPrecision;
+  }
+
   // ===================
   // Sizes
   // ===================
@@ -51,24 +57,50 @@
     width: 24px;
     height: 24px;
     font-size: tokens.$font-size-12;
+
+    svg,
+    .icon {
+      width: 12px;
+      height: 12px;
+      shape-rendering: crispEdges;
+    }
   }
 
   &[data-size='sm'] {
     width: 32px;
     height: 32px;
     font-size: tokens.$font-size-14;
+
+    svg,
+    .icon {
+      width: 16px;
+      height: 16px;
+      shape-rendering: crispEdges;
+    }
   }
 
   &[data-size='md'] {
     width: 40px;
     height: 40px;
     font-size: tokens.$font-size-16;
+
+    svg,
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &[data-size='lg'] {
     width: 48px;
     height: 48px;
     font-size: tokens.$font-size-18;
+
+    svg,
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   // ===================
@@ -89,128 +121,128 @@
   // Filled variant
   &[data-variant='filled'] {
     &[data-color='primary'] {
-      --icon-btn-bg: #{tokens.$primary};
-      --icon-btn-color: #{tokens.$text-inverse};
+      --wg-icon-btn-bg: #{tokens.$primary};
+      --wg-icon-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$primary-hover};
+        --wg-icon-btn-bg: #{tokens.$primary-hover};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$primary-active};
+        --wg-icon-btn-bg: #{tokens.$primary-active};
       }
     }
 
     &[data-color='secondary'] {
-      --icon-btn-bg: #{tokens.$secondary};
-      --icon-btn-color: #{tokens.$text-inverse};
+      --wg-icon-btn-bg: #{tokens.$secondary};
+      --wg-icon-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$secondary-hover};
+        --wg-icon-btn-bg: #{tokens.$secondary-hover};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$secondary-active};
+        --wg-icon-btn-bg: #{tokens.$secondary-active};
       }
     }
 
     &[data-color='danger'] {
-      --icon-btn-bg: #{tokens.$danger};
-      --icon-btn-color: #{tokens.$text-inverse};
+      --wg-icon-btn-bg: #{tokens.$danger};
+      --wg-icon-btn-color: #{tokens.$text-inverse};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$danger-hover};
+        --wg-icon-btn-bg: #{tokens.$danger-hover};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$danger-active};
+        --wg-icon-btn-bg: #{tokens.$danger-active};
       }
     }
   }
 
   // Outline variant
   &[data-variant='outline'] {
-    --icon-btn-bg: transparent;
+    --wg-icon-btn-bg: transparent;
 
     &[data-color='primary'] {
-      --icon-btn-border: #{tokens.$primary};
-      --icon-btn-color: #{tokens.$primary};
+      --wg-icon-btn-border: #{tokens.$primary};
+      --wg-icon-btn-color: #{tokens.$primary};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$primary-alpha-10};
+        --wg-icon-btn-bg: #{tokens.$primary-alpha-10};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$primary-alpha-20};
+        --wg-icon-btn-bg: #{tokens.$primary-alpha-20};
       }
     }
 
     &[data-color='secondary'] {
-      --icon-btn-border: #{tokens.$border};
-      --icon-btn-color: #{tokens.$text};
+      --wg-icon-btn-border: #{tokens.$border};
+      --wg-icon-btn-color: #{tokens.$text};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$background-muted};
-        --icon-btn-border: #{tokens.$border-hover};
+        --wg-icon-btn-bg: #{tokens.$background-muted};
+        --wg-icon-btn-border: #{tokens.$border-hover};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$background-muted-darken-3};
+        --wg-icon-btn-bg: #{tokens.$background-muted-darken-3};
       }
     }
 
     &[data-color='danger'] {
-      --icon-btn-border: #{tokens.$danger};
-      --icon-btn-color: #{tokens.$danger};
+      --wg-icon-btn-border: #{tokens.$danger};
+      --wg-icon-btn-color: #{tokens.$danger};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$red-light};
+        --wg-icon-btn-bg: #{tokens.$red-light};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$red-light-darken-5};
+        --wg-icon-btn-bg: #{tokens.$red-light-darken-5};
       }
     }
   }
 
   // Ghost variant
   &[data-variant='ghost'] {
-    --icon-btn-bg: transparent;
-    --icon-btn-border: transparent;
+    --wg-icon-btn-bg: transparent;
+    --wg-icon-btn-border: transparent;
 
     &[data-color='primary'] {
-      --icon-btn-color: #{tokens.$primary};
+      --wg-icon-btn-color: #{tokens.$primary};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$primary-alpha-10};
+        --wg-icon-btn-bg: #{tokens.$primary-alpha-10};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$primary-alpha-20};
+        --wg-icon-btn-bg: #{tokens.$primary-alpha-20};
       }
     }
 
     &[data-color='secondary'] {
-      --icon-btn-color: #{tokens.$text};
+      --wg-icon-btn-color: #{tokens.$text};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$background-muted};
+        --wg-icon-btn-bg: #{tokens.$background-muted};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$background-muted-darken-3};
+        --wg-icon-btn-bg: #{tokens.$background-muted-darken-3};
       }
     }
 
     &[data-color='danger'] {
-      --icon-btn-color: #{tokens.$danger};
+      --wg-icon-btn-color: #{tokens.$danger};
 
       &:hover:not(:disabled) {
-        --icon-btn-bg: #{tokens.$red-light};
+        --wg-icon-btn-bg: #{tokens.$red-light};
       }
 
       &:active:not(:disabled) {
-        --icon-btn-bg: #{tokens.$red-light-darken-5};
+        --wg-icon-btn-bg: #{tokens.$red-light-darken-5};
       }
     }
   }

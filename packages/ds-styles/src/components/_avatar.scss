@@ -10,9 +10,9 @@
   font-family: tokens.$font-family-default;
   font-weight: tokens.$font-weight-semibold;
   line-height: tokens.$line-height-tight;
-  background-color: var(--avatar-bg, #{tokens.$primary-alpha-10});
-  color: var(--avatar-color, #{tokens.$primary});
-  border: 1px solid var(--avatar-border, #{tokens.$border});
+  background-color: var(--wg-avatar-bg, #{tokens.$primary-alpha-10});
+  color: var(--wg-avatar-color, #{tokens.$primary});
+  border: 1px solid var(--wg-avatar-border, #{tokens.$border});
   transition:
     background-color tokens.$transition-fast,
     color tokens.$transition-fast,

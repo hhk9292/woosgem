@@ -22,9 +22,9 @@
   text-decoration: none;
 
   // CSS custom properties for colors
-  background-color: var(--badge-bg, #{tokens.$background});
-  color: var(--badge-color, #{tokens.$text});
-  border: 1px solid var(--badge-border, transparent);
+  background-color: var(--wg-badge-bg, #{tokens.$background});
+  color: var(--wg-badge-color, #{tokens.$text});
+  border: 1px solid var(--wg-badge-border, transparent);
 
   // ===================
   // Sizes
@@ -54,111 +54,111 @@
   // Solid variant (default)
   &[data-variant='solid'] {
     &[data-color='primary'] {
-      --badge-bg: #{tokens.$primary};
-      --badge-color: #{tokens.$text-inverse};
+      --wg-badge-bg: #{tokens.$primary};
+      --wg-badge-color: #{tokens.$text-inverse};
     }
 
     &[data-color='secondary'] {
-      --badge-bg: #{tokens.$secondary};
-      --badge-color: #{tokens.$text-inverse};
+      --wg-badge-bg: #{tokens.$secondary};
+      --wg-badge-color: #{tokens.$text-inverse};
     }
 
     &[data-color='danger'] {
-      --badge-bg: #{tokens.$danger};
-      --badge-color: #{tokens.$text-inverse};
+      --wg-badge-bg: #{tokens.$danger};
+      --wg-badge-color: #{tokens.$text-inverse};
     }
 
     &[data-color='success'] {
-      --badge-bg: #{tokens.$success};
-      --badge-color: #{tokens.$text-inverse};
+      --wg-badge-bg: #{tokens.$success};
+      --wg-badge-color: #{tokens.$text-inverse};
     }
 
     &[data-color='warning'] {
-      --badge-bg: #{tokens.$warning};
-      --badge-color: #{tokens.$text};
+      --wg-badge-bg: #{tokens.$warning};
+      --wg-badge-color: #{tokens.$text};
     }
 
     &[data-color='info'] {
-      --badge-bg: #{tokens.$info};
-      --badge-color: #{tokens.$text-inverse};
+      --wg-badge-bg: #{tokens.$info};
+      --wg-badge-color: #{tokens.$text-inverse};
     }
   }
 
   // Outline variant
   &[data-variant='outline'] {
     &[data-color='primary'] {
-      --badge-border: #{tokens.$primary};
-      --badge-color: #{tokens.$primary};
-      --badge-bg: transparent;
+      --wg-badge-border: #{tokens.$primary};
+      --wg-badge-color: #{tokens.$primary};
+      --wg-badge-bg: transparent;
     }
 
     &[data-color='secondary'] {
-      --badge-border: #{tokens.$secondary};
-      --badge-color: #{tokens.$secondary};
-      --badge-bg: transparent;
+      --wg-badge-border: #{tokens.$secondary};
+      --wg-badge-color: #{tokens.$secondary};
+      --wg-badge-bg: transparent;
     }
 
     &[data-color='danger'] {
-      --badge-border: #{tokens.$danger};
-      --badge-color: #{tokens.$danger};
-      --badge-bg: transparent;
+      --wg-badge-border: #{tokens.$danger};
+      --wg-badge-color: #{tokens.$danger};
+      --wg-badge-bg: transparent;
     }
 
     &[data-color='success'] {
-      --badge-border: #{tokens.$success};
-      --badge-color: #{tokens.$success};
-      --badge-bg: transparent;
+      --wg-badge-border: #{tokens.$success};
+      --wg-badge-color: #{tokens.$success};
+      --wg-badge-bg: transparent;
     }
 
     &[data-color='warning'] {
-      --badge-border: #{tokens.$warning};
-      --badge-color: #{tokens.$warning};
-      --badge-bg: transparent;
+      --wg-badge-border: #{tokens.$warning};
+      --wg-badge-color: #{tokens.$warning};
+      --wg-badge-bg: transparent;
     }
 
     &[data-color='info'] {
-      --badge-border: #{tokens.$info};
-      --badge-color: #{tokens.$info};
-      --badge-bg: transparent;
+      --wg-badge-border: #{tokens.$info};
+      --wg-badge-color: #{tokens.$info};
+      --wg-badge-bg: transparent;
     }
   }
 
   // Subtle variant (light background)
   &[data-variant='subtle'] {
     &[data-color='primary'] {
-      --badge-bg: #{tokens.$primary-alpha-10};
-      --badge-color: #{tokens.$primary};
-      --badge-border: transparent;
+      --wg-badge-bg: #{tokens.$primary-alpha-10};
+      --wg-badge-color: #{tokens.$primary};
+      --wg-badge-border: transparent;
     }
 
     &[data-color='secondary'] {
-      --badge-bg: #{tokens.$secondary-alpha-10};
-      --badge-color: #{tokens.$secondary};
-      --badge-border: transparent;
+      --wg-badge-bg: #{tokens.$secondary-alpha-10};
+      --wg-badge-color: #{tokens.$secondary};
+      --wg-badge-border: transparent;
     }
 
     &[data-color='danger'] {
-      --badge-bg: #{tokens.$red-light};
-      --badge-color: #{tokens.$danger};
-      --badge-border: transparent;
+      --wg-badge-bg: #{tokens.$red-light};
+      --wg-badge-color: #{tokens.$danger};
+      --wg-badge-border: transparent;
     }
 
     &[data-color='success'] {
-      --badge-bg: #{tokens.$green-light};
-      --badge-color: #{tokens.$success};
-      --badge-border: transparent;
+      --wg-badge-bg: #{tokens.$green-light};
+      --wg-badge-color: #{tokens.$success};
+      --wg-badge-border: transparent;
     }
 
     &[data-color='warning'] {
-      --badge-bg: #{tokens.$yellow-light};
-      --badge-color: #{tokens.$warning};
-      --badge-border: transparent;
+      --wg-badge-bg: #{tokens.$yellow-light};
+      --wg-badge-color: #{tokens.$warning};
+      --wg-badge-border: transparent;
     }
 
     &[data-color='info'] {
-      --badge-bg: #{tokens.$blue-light};
-      --badge-color: #{tokens.$info};
-      --badge-border: transparent;
+      --wg-badge-bg: #{tokens.$blue-light};
+      --wg-badge-color: #{tokens.$info};
+      --wg-badge-border: transparent;
     }
   }
 }

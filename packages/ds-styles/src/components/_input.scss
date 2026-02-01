@@ -12,7 +12,7 @@
   font-family: tokens.$font-family-default;
   font-size: tokens.$font-size-14;
   line-height: tokens.$line-height-normal;
-  background-color: var(--input-bg, #{tokens.$background});
+  background-color: var(--wg-input-bg, #{tokens.$background});
   color: tokens.$text;
   border-radius: tokens.$radius-8;
   transition:
@@ -21,7 +21,7 @@
     box-shadow tokens.$transition-fast;
 
   // Default state
-  border: 1px solid var(--input-border, #{tokens.$border});
+  border: 1px solid var(--wg-input-border, #{tokens.$border});
 
   &::placeholder {
     color: tokens.$text-subtle;
@@ -33,22 +33,22 @@
 
   // Outline variant (default)
   &[data-variant='outline'] {
-    --input-bg: #{tokens.$background};
-    --input-border: #{tokens.$border};
+    --wg-input-bg: #{tokens.$background};
+    --wg-input-border: #{tokens.$border};
 
     &:hover:not(:disabled) {
-      --input-border: #{tokens.$border-hover};
+      --wg-input-border: #{tokens.$border-hover};
     }
 
     &:focus,
     &:focus-visible {
       outline: none;
-      --input-border: #{tokens.$primary};
+      --wg-input-border: #{tokens.$primary};
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
     }
 
     &[data-state='error'] {
-      --input-border: #{tokens.$danger};
+      --wg-input-border: #{tokens.$danger};
 
       &:focus,
       &:focus-visible {
@@ -57,7 +57,7 @@
     }
 
     &[data-state='success'] {
-      --input-border: #{tokens.$success};
+      --wg-input-border: #{tokens.$success};
 
       &:focus,
       &:focus-visible {
@@ -68,23 +68,23 @@
 
   // Filled variant
   &[data-variant='filled'] {
-    --input-bg: #{tokens.$background-subtle};
-    --input-border: transparent;
+    --wg-input-bg: #{tokens.$background-subtle};
+    --wg-input-border: transparent;
 
     &:hover:not(:disabled) {
-      --input-bg: #{tokens.$background-subtle-darken-3};
+      --wg-input-bg: #{tokens.$background-subtle-darken-3};
     }
 
     &:focus,
     &:focus-visible {
       outline: none;
-      --input-border: #{tokens.$primary};
-      --input-bg: #{tokens.$background};
+      --wg-input-border: #{tokens.$primary};
+      --wg-input-bg: #{tokens.$background};
       box-shadow: 0 0 0 2px #{tokens.$primary-alpha-20};
     }
 
     &[data-state='error'] {
-      --input-border: #{tokens.$danger};
+      --wg-input-border: #{tokens.$danger};
 
       &:focus,
       &:focus-visible {
@@ -93,7 +93,7 @@
     }
 
     &[data-state='success'] {
-      --input-border: #{tokens.$success};
+      --wg-input-border: #{tokens.$success};
 
       &:focus,
       &:focus-visible {
@@ -104,39 +104,39 @@
 
   // Underline variant
   &[data-variant='underline'] {
-    --input-bg: transparent;
+    --wg-input-bg: transparent;
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--input-border, #{tokens.$border});
+    border-bottom: 1px solid var(--wg-input-border, #{tokens.$border});
     border-radius: 0;
     padding-bottom: tokens.$spacing-2;
 
     &:hover:not(:disabled) {
-      --input-border: #{tokens.$border-hover};
+      --wg-input-border: #{tokens.$border-hover};
     }
 
     &:focus,
     &:focus-visible {
       outline: none;
-      --input-border: #{tokens.$primary};
-      box-shadow: 0 1px 0 0 var(--input-border, #{tokens.$primary});
+      --wg-input-border: #{tokens.$primary};
+      box-shadow: 0 1px 0 0 var(--wg-input-border, #{tokens.$primary});
     }
 
     &[data-state='error'] {
-      --input-border: #{tokens.$danger};
+      --wg-input-border: #{tokens.$danger};
 
       &:focus,
       &:focus-visible {
-        box-shadow: 0 1px 0 0 var(--input-border, #{tokens.$danger});
+        box-shadow: 0 1px 0 0 var(--wg-input-border, #{tokens.$danger});
       }
     }
 
     &[data-state='success'] {
-      --input-border: #{tokens.$success};
+      --wg-input-border: #{tokens.$success};
 
       &:focus,
       &:focus-visible {
-        box-shadow: 0 1px 0 0 var(--input-border, #{tokens.$success});
+        box-shadow: 0 1px 0 0 var(--wg-input-border, #{tokens.$success});
       }
     }
   }
@@ -176,7 +176,7 @@
 
   // Error state
   &[data-state='error'] {
-    --input-border: #{tokens.$danger};
+    --wg-input-border: #{tokens.$danger};
 
     &::placeholder {
       color: #{tokens.$danger-lighten-20};
@@ -185,7 +185,7 @@
 
   // Success state
   &[data-state='success'] {
-    --input-border: #{tokens.$success};
+    --wg-input-border: #{tokens.$success};
 
     &::placeholder {
       color: #{tokens.$success-lighten-20};
