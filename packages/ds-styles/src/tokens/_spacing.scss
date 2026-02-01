@@ -95,6 +95,32 @@ $size-scale: (
 );
 
 // ===================
+// Container Heights
+// Standard heights for interactive components (buttons, inputs, etc.)
+// ===================
+
+$container-01: 1.5rem;   // 24px - xs (compact buttons, tags)
+$container-02: 2rem;     // 32px - sm (small buttons, inputs)
+$container-03: 2.5rem;   // 40px - md (default buttons, inputs)
+$container-04: 3rem;     // 48px - lg (large buttons, inputs)
+$container-05: 4rem;     // 64px - xl (extra large)
+
+$container-scale: (
+  01: $container-01,
+  02: $container-02,
+  03: $container-03,
+  04: $container-04,
+  05: $container-05,
+);
+
+// Semantic aliases (for easier usage)
+$container-xs: $container-01;
+$container-sm: $container-02;
+$container-md: $container-03;
+$container-lg: $container-04;
+$container-xl: $container-05;
+
+// ===================
 // Icon Sizes
 // ===================
 

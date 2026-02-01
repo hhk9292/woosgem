@@ -65,6 +65,28 @@ export type SizeKey = keyof typeof size;
 export type SizeValue = (typeof size)[SizeKey];
 
 // ===================
+// Container Heights
+// Standard heights for interactive components (buttons, inputs, etc.)
+// ===================
+
+export const container = {
+  '01': '1.5rem',   // 24px - xs (compact buttons, tags)
+  '02': '2rem',     // 32px - sm (small buttons, inputs)
+  '03': '2.5rem',   // 40px - md (default buttons, inputs)
+  '04': '3rem',     // 48px - lg (large buttons, inputs)
+  '05': '4rem',     // 64px - xl (extra large)
+  // Semantic aliases
+  xs: '1.5rem',
+  sm: '2rem',
+  md: '2.5rem',
+  lg: '3rem',
+  xl: '4rem',
+} as const;
+
+export type ContainerKey = keyof typeof container;
+export type ContainerValue = (typeof container)[ContainerKey];
+
+// ===================
 // Icon Sizes
 // ===================
 

@@ -34,6 +34,22 @@
 *[data-size="2xl"] { --wg-size: #{$size-2xl}; }
 
 // ===================
+// Container Heights
+// Usage: data-container="01|02|03|04|05" or data-container="xs|sm|md|lg|xl"
+// ===================
+
+*[data-container="01"],
+*[data-container="xs"] { height: $container-xs; }
+*[data-container="02"],
+*[data-container="sm"] { height: $container-sm; }
+*[data-container="03"],
+*[data-container="md"] { height: $container-md; }
+*[data-container="04"],
+*[data-container="lg"] { height: $container-lg; }
+*[data-container="05"],
+*[data-container="xl"] { height: $container-xl; }
+
+// ===================
 // Spacing (padding/margin)
 // Usage: data-spacing="1|2|3|4|..." or data-gap="1|2|3|..."
 // ===================
