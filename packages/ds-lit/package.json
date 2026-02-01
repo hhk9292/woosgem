@@ -1,0 +1,44 @@
+{
+  "name": "@woosgem/ds-lit",
+  "version": "0.0.1",
+  "description": "WooSGem Design System - Lit Web Components",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@woosgem/ds-core": "workspace:*",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "peerDependencies": {
+    "@woosgem/ds-styles": "workspace:*"
+  },
+  "keywords": [
+    "design-system",
+    "web-components",
+    "lit",
+    "woosgem"
+  ],
+  "license": "MIT"
+}
