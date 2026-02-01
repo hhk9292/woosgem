@@ -11,9 +11,9 @@ import type {
   ColorValue,
   HexColor,
   ThemeMode,
-} from './schema.js';
-import { transforms } from './transformations.js';
-import { darken, lighten, withAlpha } from './transformer.js';
+} from './schema';
+import { transforms } from './transformations';
+import { darken, lighten, withAlpha } from './transformer';
 
 /**
  * Smart defaults for light mode

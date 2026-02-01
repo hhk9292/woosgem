@@ -10,8 +10,8 @@ import type {
   ValidationWarning,
   HexColor,
   ColorValue,
-} from '../schema.js';
-import { contrastRatio } from '../transformer.js';
+} from '../schema';
+import { contrastRatio } from '../transformer';
 
 /**
  * WCAG 2.1 contrast ratio thresholds

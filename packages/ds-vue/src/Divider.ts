@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { Divider as DividerDef, type DividerStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './createComponent';
 
 /**
  * Divider component props.

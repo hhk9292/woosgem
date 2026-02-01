@@ -3,7 +3,7 @@
  * Minimal dark mode theme - everything else uses smart defaults
  */
 
-import type { ColorSetDefinition } from '../schema.js';
+import type { ColorSetDefinition } from '../schema';
 
 /**
  * Dark theme definition

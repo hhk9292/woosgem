@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** Divider orientation options */
 export const DividerOrientations = ['horizontal', 'vertical'] as const;
@@ -46,7 +47,7 @@ export const Divider = {
   },
 
   mapPropsToAttrs: (props: DividerStyleProps): DividerAttrs => {
-    const merged = { ...Divider.defaultProps, ...props };
+    const merged = { ...Divider.defaultProps, ...filterNullish(props) };
     return {
       class: 'divider',
       role: 'separator',

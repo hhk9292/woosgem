@@ -3,8 +3,8 @@
  * Mode-specific rules for deriving colors from base values
  */
 
-import type { HexColor, ColorValue, ThemeMode } from './schema.js';
-import { darken, lighten, withAlpha } from './transformer.js';
+import type { HexColor, ColorValue, ThemeMode } from './schema';
+import { darken, lighten, withAlpha } from './transformer';
 
 /**
  * Transformation function signature

@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** Avatar size options */
 export const AvatarSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
@@ -43,7 +44,7 @@ export const Avatar = {
   },
 
   mapPropsToAttrs: (props: AvatarStyleProps): AvatarAttrs => {
-    const merged = { ...Avatar.defaultProps, ...props };
+    const merged = { ...Avatar.defaultProps, ...filterNullish(props) };
     return {
       class: 'avatar',
       'data-size': merged.size,

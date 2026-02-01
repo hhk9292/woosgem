@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** ListItem variant options */
 export const ListItemVariants = ['default', 'interactive'] as const;
@@ -38,7 +39,7 @@ export const ListItem = {
   },
 
   mapPropsToAttrs: (props: ListItemStyleProps): ListItemAttrs => {
-    const merged = { ...ListItem.defaultProps, ...props };
+    const merged = { ...ListItem.defaultProps, ...filterNullish(props) };
     return {
       class: 'list-item',
       'data-variant': merged.variant,

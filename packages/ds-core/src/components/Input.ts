@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** Input variant options */
 export const InputVariants = ['outline', 'filled', 'underline'] as const;
@@ -44,7 +45,7 @@ export const Input = {
   },
 
   mapPropsToAttrs: (props: InputStyleProps): InputAttrs => {
-    const merged = { ...Input.defaultProps, ...props };
+    const merged = { ...Input.defaultProps, ...filterNullish(props) };
     const state = merged.error ? 'error' : merged.success ? 'success' : merged.disabled ? 'disabled' : undefined;
     return {
       class: 'input',

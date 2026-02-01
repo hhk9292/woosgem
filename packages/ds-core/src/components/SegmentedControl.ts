@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** SegmentedControl size options */
 export const SegmentedControlSizes = ['sm', 'md', 'lg'] as const;
@@ -49,7 +50,7 @@ export const SegmentedControl = {
   },
 
   mapPropsToAttrs: (props: SegmentedControlStyleProps): SegmentedControlAttrs => {
-    const merged = { ...SegmentedControl.defaultProps, ...props };
+    const merged = { ...SegmentedControl.defaultProps, ...filterNullish(props) };
     return {
       class: 'segmented-control',
       role: 'group',
@@ -77,7 +78,7 @@ export const SegmentedControlItem = {
   propTypes: {},
 
   mapPropsToAttrs: (props: SegmentedControlItemStyleProps): SegmentedControlItemAttrs => {
-    const merged = { ...SegmentedControlItem.defaultProps, ...props };
+    const merged = { ...SegmentedControlItem.defaultProps, ...filterNullish(props) };
     return {
       class: 'segmented-control-item',
       'data-state': merged.selected ? 'selected' : merged.disabled ? 'disabled' : undefined,

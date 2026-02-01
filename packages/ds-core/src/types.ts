@@ -30,3 +30,21 @@ export type ExtractTag<T> = T extends ComponentDefinition<any, any, infer Tag> ?
 
 /** Utility type to flatten intersection types for better IDE display */
 export type Prettify<T> = { [K in keyof T]: T[K] } & {};
+
+/**
+ * Filter out undefined and null values from an object.
+ * Used in mapPropsToAttrs to ensure explicit undefined/null props
+ * don't override default values.
+ */
+export function filterNullish<T extends object>(obj: T): Partial<T> {
+  const result = {} as Partial<T>;
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = obj[key];
+      if (value !== undefined && value !== null) {
+        result[key] = value;
+      }
+    }
+  }
+  return result;
+}

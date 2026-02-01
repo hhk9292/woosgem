@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** Checkbox size options */
 export const CheckboxSizes = ['sm', 'md', 'lg'] as const;
@@ -35,7 +36,7 @@ export const Checkbox = {
   },
 
   mapPropsToAttrs: (props: CheckboxStyleProps): CheckboxAttrs => {
-    const merged = { ...Checkbox.defaultProps, ...props };
+    const merged = { ...Checkbox.defaultProps, ...filterNullish(props) };
     const state = merged.disabled
       ? 'disabled'
       : merged.indeterminate

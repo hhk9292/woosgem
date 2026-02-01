@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { Tab as TabDef, type TabStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './createComponent';
 
 /**
  * Tab component props.

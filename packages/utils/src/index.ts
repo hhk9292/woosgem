@@ -20,4 +20,4 @@ export {
   emailValidator,
   urlValidator,
   uuidValidator,
-} from './validation.js';
+} from './validation';

@@ -12,8 +12,8 @@ import type {
   ValidationError,
   ValidationWarning,
   HexColor,
-} from '../schema.js';
-import { isValidHex } from '../transformer.js';
+} from '../schema';
+import { isValidHex } from '../transformer';
 
 /**
  * Validation error codes

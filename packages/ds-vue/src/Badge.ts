@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { Badge as BadgeDef, type BadgeStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './createComponent';
 
 /**
  * Badge component props.

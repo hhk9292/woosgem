@@ -3,7 +3,7 @@
  * Generates TypeScript constants from resolved color sets
  */
 
-import type { ResolvedColorSet, ResolvedColorTokens, OutputOptions } from '../schema.js';
+import type { ResolvedColorSet, ResolvedColorTokens, OutputOptions } from '../schema';
 
 /**
  * Convert kebab-case to camelCase

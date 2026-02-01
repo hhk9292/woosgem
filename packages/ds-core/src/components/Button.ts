@@ -1,4 +1,5 @@
-import type { ComponentDefinition } from '../types.js';
+import type { ComponentDefinition } from '../types';
+import { filterNullish } from '../types';
 
 /** Button variant options */
 export const ButtonVariants = ['filled', 'outline', 'ghost', 'link'] as const;
@@ -53,7 +54,7 @@ export const Button = {
   },
 
   mapPropsToAttrs: (props: ButtonStyleProps): ButtonAttrs => {
-    const merged = { ...Button.defaultProps, ...props };
+    const merged = { ...Button.defaultProps, ...filterNullish(props) };
     return {
       class: 'btn',
       'data-variant': merged.variant,

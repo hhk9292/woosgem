@@ -3,7 +3,7 @@
  * Generates SCSS maps and files from resolved color sets
  */
 
-import type { ResolvedColorSet, ResolvedColorTokens, OutputOptions } from '../schema.js';
+import type { ResolvedColorSet, ResolvedColorTokens, OutputOptions } from '../schema';
 
 /**
  * Generate an SCSS map from resolved tokens

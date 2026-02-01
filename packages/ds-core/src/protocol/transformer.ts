@@ -3,7 +3,7 @@
  * Pure color manipulation functions with no external dependencies
  */
 
-import type { HexColor, RgbColor, HslColor, ColorValue } from './schema.js';
+import type { HexColor, RgbColor, HslColor, ColorValue } from './schema';
 
 /**
  * Parse a hex color string to RGB values

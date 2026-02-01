@@ -1,6 +1,6 @@
 import type { DefineComponent } from 'vue';
 import { IconButton as IconButtonDef, type IconButtonStyleProps, type Prettify } from '@woosgem/ds-core';
-import { createComponent } from './createComponent.js';
+import { createComponent } from './createComponent';
 
 /**
  * IconButton component props.
