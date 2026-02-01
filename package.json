@@ -20,7 +20,7 @@
     "test:react": "pnpm --filter @woosgem/ds-test test --project react",
     "test:vue": "pnpm --filter @woosgem/ds-test test --project vue",
     "test:all": "pnpm --filter @woosgem/ds-test test",
-    "test:dashboard": "pnpm --filter @woosgem/ds-test test --coverage && node scripts/generate-dashboard.js"
+    "test:dashboard": "pnpm --filter @woosgem/ds-test test --coverage && tsx scripts/generate-dashboard.ts"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.2",

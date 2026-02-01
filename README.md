@@ -2,8 +2,8 @@
 
 ### Build & Quality
 [![CI](https://github.com/hhk9292/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
-[![Tests](https://img.shields.io/badge/tests-295%20passed-brightgreen)](./docs/test-report.md)
-[![Coverage](https://img.shields.io/badge/coverage-66%25-brightgreen)](./docs/test-report.md)
+[![Tests](https://img.shields.io/badge/tests-1136%20passed-brightgreen)](./docs/test-report.md)
+[![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen)](./docs/test-report.md)
 
 ### Project Status
 [![Components](https://img.shields.io/badge/components-10-blue)](./docs/roadmap.md)
