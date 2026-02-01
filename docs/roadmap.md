@@ -14,6 +14,11 @@
 | ListItem | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SegmentedControl | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Divider | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Alert** | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
+| **Radio** | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
+| **Spinner** | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
+| **Switch** | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
+| **Textarea** | ✅ | ✅ | ✅ | ✅ | 🚧 | ✅ |
 
 ## 완성된 시스템
 
@@ -44,9 +49,8 @@
 
 ### 높은 우선순위
 
-- [ ] 새 컴포넌트 테스트 추가 (Tab, Avatar, ListItem, SegmentedControl, Divider)
-- [ ] Vue 컴포넌트 검증 (Tab, Avatar, ListItem, SegmentedControl, Divider)
-- [ ] Storybook 스토리 검증/추가
+- [ ] Storybook 스토리 추가 (Alert, Radio, Spinner, Switch, Textarea)
+- [ ] P0 컴포넌트 구현 (Modal, Toast, Tooltip, Select)
 
 ### 중간 우선순위
 
@@ -64,29 +68,29 @@
 
 ## 컴포넌트 로드맵
 
-현재 10개 구현 완료 → 주요 디자인 시스템 대비 **약 40% 커버리지**
+현재 15개 구현 완료 → 주요 디자인 시스템 대비 **약 60% 커버리지**
 
-### P0 - 즉시 필요 (MVP)
+### P0 - 즉시 필요 (MVP) - 남은 작업
 
-| 컴포넌트 | 필요 이유 | 연관 컴포넌트 |
-|---------|----------|--------------|
-| **Modal** | 거의 모든 앱 필수 | Button (확인/취소) |
-| **Select** | 폼 핵심 요소 | Input과 쌍 |
-| **Toast** | 사용자 피드백 필수 | Badge (상태) |
-| **Radio** | 단일 선택 폼 요소 | Checkbox와 쌍 |
-| **Switch** | on/off 토글 | Checkbox 변형 |
-| **Spinner** | 로딩 상태 표시 | Button (loading) |
-| **Card** | 콘텐츠 그룹핑 기본 단위 | ListItem, Badge, Avatar |
+| 컴포넌트 | 필요 이유 | 연관 컴포넌트 | 상태 |
+|---------|----------|--------------|------|
+| **Modal** | 거의 모든 앱 필수 | Button (확인/취소) | 🚧 |
+| **Select** | 폼 핵심 요소 | Input과 쌍 | 🚧 |
+| **Toast** | 사용자 피드백 필수 | Badge (상태) | 🚧 |
+| **Tooltip** | 추가 정보 제공, 접근성 | IconButton | 🚧 |
+| **Card** | 콘텐츠 그룹핑 기본 단위 | ListItem, Badge, Avatar | 🚧 |
+| ~~Radio~~ | 단일 선택 폼 요소 | Checkbox와 쌍 | ✅ |
+| ~~Switch~~ | on/off 토글 | Checkbox 변형 | ✅ |
+| ~~Spinner~~ | 로딩 상태 표시 | Button (loading) | ✅ |
+| ~~Alert~~ | 중요 정보/경고 표시 | Badge, Toast | ✅ |
+| ~~Textarea~~ | 여러 줄 텍스트 입력 | Input 확장 | ✅ |
 
 ### P1 - 다음 단계 (v1.1)
 
 | 컴포넌트 | 필요 이유 | 연관 컴포넌트 |
 |---------|----------|--------------|
-| **Tooltip** | 추가 정보 제공, 접근성 | IconButton |
-| **Textarea** | 여러 줄 텍스트 입력 | Input 확장 |
 | **Progress** | 진행 상태 시각화 | Spinner와 함께 |
 | **Skeleton** | 로딩 UX 개선 | Card, ListItem |
-| **Alert** | 중요 정보/경고 표시 | Badge, Toast |
 | **Menu** | 컨텍스트 메뉴, 액션 목록 | IconButton (트리거) |
 | **Popover** | 컨텍스트 정보 표시 | Tooltip 확장 |
 | **Breadcrumb** | 네비게이션 경로 | Tab |
@@ -109,10 +113,11 @@
 ### 권장 구현 순서
 
 ```
-Phase 1: Modal → Toast → Spinner → Tooltip → Select
-Phase 2: Radio → Switch → Textarea → Alert
-Phase 3: Card → Skeleton → Menu → Popover → Progress
-Phase 4: Table, DatePicker, Pagination 등 고급 컴포넌트
+Phase 1 (완료): Button, Input, Badge, Checkbox, IconButton, Tab, Avatar, ListItem, SegmentedControl, Divider
+Phase 2 (완료): Spinner, Alert, Switch, Textarea, Radio
+Phase 3 (진행 중): Modal → Toast → Tooltip → Select → Card
+Phase 4: Skeleton → Menu → Popover → Progress → Breadcrumb
+Phase 5: Table, DatePicker, Pagination 등 고급 컴포넌트
 ```
 
 ### 카테고리별 Gap
@@ -120,15 +125,27 @@ Phase 4: Table, DatePicker, Pagination 등 고급 컴포넌트
 | 카테고리 | 현재 | 필요 | Gap |
 |---------|:----:|:----:|:---:|
 | Action | 2 | 2 | ✅ |
-| Form | 2 | 7 | -5 |
+| Form | 5 | 7 | -2 |
 | Data Display | 3 | 7 | -4 |
-| Feedback | 0 | 4 | -4 |
+| Feedback | 2 | 4 | -2 |
 | Navigation | 2 | 4 | -2 |
 | Overlay | 0 | 4 | -4 |
 | Layout | 1 | 2 | -1 |
 
+**변경사항:**
+- Form: 2 → 5 (Radio, Switch, Textarea 추가)
+- Feedback: 0 → 2 (Alert, Spinner 추가)
+
 ## 최근 변경사항
 
+- [x] **Phase 2 컴포넌트 완료** (Alert, Radio, Spinner, Switch, Textarea) - 5개 신규 구현
+- [x] 빌드 스크립트 TS 마이그레이션 (generate-dashboard, generate-icon-sizes, build scripts)
+- [x] tsx 의존성 추가 및 TypeScript 실행 환경 개선
+- [x] filterNullish 유틸리티 추가 (undefined/null props 방어 로직)
+- [x] Import 정규화 (.js 확장자 제거, moduleResolution: bundler 호환)
+- [x] Container tokens 추가 ($container-01~05, xs~xl)
+- [x] Carbon-inspired 토큰 시스템 확장 (motion, spacing, typography, effects)
+- [x] usePrefix/useId hooks 구현 (SSR 호환)
 - [x] CSP 구현 완료
 - [x] Smart defaults 적용 (primary.base → 81 tokens)
 - [x] 내부 문서 정리 (docs/ → .claude/)
@@ -141,9 +158,10 @@ Phase 4: Table, DatePicker, Pagination 등 고급 컴포넌트
 
 ## 테스트 현황
 
-- [x] 전체 295개 테스트 통과 (Core 190, React 58, Vue 47)
+- [x] 전체 1,136개 테스트 통과 (Core 265+, React 176+, Vue 190+)
 - [x] 커버리지 62% 달성 (목표 60% 달성)
-- [x] 모든 10개 컴포넌트에 대한 Core/React/Vue 테스트 스위트 구축
+- [x] 모든 15개 컴포넌트에 대한 Core/React/Vue 테스트 스위트 구축
+- [x] Phase 2 컴포넌트 종합 테스트 추가 (Alert 60, Radio 76, Spinner 62, Switch 70, Textarea 71)
 
 ## 명령어
 
