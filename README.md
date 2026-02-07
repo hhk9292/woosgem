@@ -1,5 +1,7 @@
 # WooSGem
 
+**English** | [한국어](./README.ko.md)
+
 ### Build & Quality
 [![CI](https://github.com/hhk9292/woosgem/actions/workflows/test.yml/badge.svg)](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
 [![Tests](https://img.shields.io/badge/tests-1136%20passed-brightgreen)](./docs/test-report.md)
@@ -12,11 +14,11 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-모던 웹 애플리케이션을 위한 확장 가능하고 테마를 지원하는 디자인 시스템입니다.
-이 프로젝트는 **Claude Code**를 활용한 **바이브코딩(Vibe Coding)**으로 제작되었습니다.
+A scalable, theme-aware design system for modern web applications.
+This project is built with **Vibe Coding** powered by **Claude Code**.
 
 ## Dashboard
-- [Test & Coverage 상세 리포트](./docs/test-report.md)
+- [Detailed Test & Coverage Report](./docs/test-report.md)
 
 ## Quick Links
 
@@ -24,17 +26,17 @@
 - [Getting Started](./docs/guides/getting-started.md)
 - [Roadmap](./docs/roadmap.md)
 
-## 특징
+## Features
 
-- **다중 프레임워크 지원**: React와 Vue 컴포넌트 제공
-- **테마 시스템**: 런타임 테마 전환 및 빌드타임 테마 분리 지원
-- **Color Set Protocol**: 최소 입력으로 81개 토큰 자동 생성
-- **아이콘 시스템**: 멀티 사이즈(sm, md, lg) 및 테마(`currentColor`) 대응 SVG 에셋
-- **타입 안전성**: TypeScript로 작성되어 완벽한 타입 지원
-- **모노레포 구조**: Turborepo를 활용한 효율적인 빌드 시스템
-- **Storybook**: 인터랙티브한 컴포넌트 문서 및 데모
+- **Multi-Framework Support**: Provides both React and Vue components
+- **Theme System**: Runtime theme switching and build-time theme splitting
+- **Color Set Protocol**: Generates 81 tokens from minimal input
+- **Icon System**: Multi-size (sm, md, lg) SVG assets with theme support (`currentColor`)
+- **Type Safety**: Written in TypeScript with full type support
+- **Monorepo Architecture**: Efficient build system powered by Turborepo
+- **Storybook**: Interactive component documentation and demos
 
-## 설치
+## Installation
 
 ### React
 
@@ -62,12 +64,12 @@ pnpm add @woosgem/ds-vue @woosgem/ds-styles
 yarn add @woosgem/ds-vue @woosgem/ds-styles
 ```
 
-## 빠른 시작
+## Quick Start
 
 ### React
 
 ```typescript
-// main.tsx 또는 App.tsx
+// main.tsx or App.tsx
 import '@woosgem/ds-styles';
 import { Button, Badge, Input } from '@woosgem/ds-react';
 
@@ -75,15 +77,15 @@ function App() {
   return (
     <div>
       <Button variant="primary" size="md">
-        클릭하세요
+        Click Me
       </Button>
 
       <Badge variant="success" size="sm">
-        새 메시지
+        New Message
       </Badge>
 
       <Input
-        placeholder="이메일을 입력하세요"
+        placeholder="Enter your email"
         fullWidth
       />
     </div>
@@ -93,53 +95,53 @@ function App() {
 export default App;
 ```
 
-## 컴포넌트
+## Components
 
-현재 **15개 컴포넌트**가 제공되며, 모두 React와 Vue 버전을 지원합니다.
+Currently **15 components** are available, all with both React and Vue implementations.
 
 ### Action (2)
-- **Button** - filled/outline/ghost/link 변형, 6가지 색상 (primary/secondary/danger/success/warning/info)
-- **IconButton** - 아이콘 전용 버튼, 3가지 형태 (circle/square/none)
+- **Button** - filled/outline/ghost/link variants, 6 colors (primary/secondary/danger/success/warning/info)
+- **IconButton** - Icon-only button, 3 shapes (circle/square/none)
 
 ### Form (5)
-- **Input** - outline/filled/underline 변형, error/success 상태
-- **Textarea** - outline/filled 변형, resize 옵션 (none/vertical/horizontal/both)
-- **Checkbox** - headless compound 패턴
-- **Radio** - RadioGroup 포함, horizontal/vertical 레이아웃
-- **Switch** - 토글 스위치, 3가지 색상 (primary/secondary/success)
+- **Input** - outline/filled/underline variants, error/success states
+- **Textarea** - outline/filled variants, resize options (none/vertical/horizontal/both)
+- **Checkbox** - Headless compound pattern
+- **Radio** - Includes RadioGroup, horizontal/vertical layouts
+- **Switch** - Toggle switch, 3 colors (primary/secondary/success)
 
 ### Feedback (2)
-- **Alert** - info/success/warning/error 상태, filled/outline/subtle 변형, closable 옵션
-- **Spinner** - 로딩 인디케이터, 4가지 크기 (xs/sm/md/lg)
+- **Alert** - info/success/warning/error states, filled/outline/subtle variants, closable option
+- **Spinner** - Loading indicator, 4 sizes (xs/sm/md/lg)
 
 ### Data Display (3)
-- **Badge** - filled/outline/subtle 변형, 6가지 색상
-- **Avatar** - circle/square 형태, xs~xl 크기
-- **ListItem** - 리스트 아이템
+- **Badge** - filled/outline/subtle variants, 6 colors
+- **Avatar** - circle/square shapes, xs~xl sizes
+- **ListItem** - List item component
 
 ### Navigation (2)
-- **Tab** - underline/filled 변형, primary/secondary 색상
-- **SegmentedControl** - 세그먼트 컨트롤
+- **Tab** - underline/filled variants, primary/secondary colors
+- **SegmentedControl** - Segmented control component
 
 ### Layout (1)
-- **Divider** - 6가지 색상 지원 (default/muted/primary/secondary/danger/success)
+- **Divider** - 6 color variations (default/muted/primary/secondary/danger/success)
 
-> 전체 컴포넌트 로드맵은 [Roadmap](./docs/roadmap.md)을 참고하세요.
+> See [Roadmap](./docs/roadmap.md) for the complete component roadmap.
 
-## 테마 시스템
+## Theme System
 
-### 사용 가능한 테마
+### Available Themes
 
-- **default** - 라이트 테마 (기본)
-- **dark** - 다크 테마 (Carbon-inspired)
+- **default** - Light theme (default)
+- **dark** - Dark theme (Carbon-inspired)
 
-### 런타임 테마 전환
+### Runtime Theme Switching
 
 ```typescript
-// 모든 테마 포함
+// Include all themes
 import '@woosgem/styles';
 
-// 테마 전환
+// Switch theme
 function setTheme(theme: 'default' | 'dark') {
   document.documentElement.setAttribute('data-theme', theme);
 }
@@ -147,33 +149,33 @@ function setTheme(theme: 'default' | 'dark') {
 function ThemeSwitcher() {
   return (
     <div>
-      <button onClick={() => setTheme('default')}>라이트</button>
-      <button onClick={() => setTheme('dark')}>다크</button>
+      <button onClick={() => setTheme('default')}>Light</button>
+      <button onClick={() => setTheme('dark')}>Dark</button>
     </div>
   );
 }
 ```
 
-### 빌드타임 테마 분리
+### Build-Time Theme Splitting
 
-번들 크기를 줄이기 위해 특정 테마만 로드:
+Load only specific themes to reduce bundle size:
 
 ```typescript
-// 다크 테마만 사용
+// Use dark theme only
 import '@woosgem/ds-styles/themes/dark';
 
-// 또는 라이트 테마만
+// Or light theme only
 import '@woosgem/ds-styles/themes/default';
 ```
 
 ## Color Set Protocol (CSP)
 
-최소한의 입력으로 완전한 테마를 생성하는 프로토콜입니다.
+A protocol for generating complete themes from minimal input.
 
 ```typescript
 import { generateColorSet, generateThemeCSS } from '@woosgem/ds-core';
 
-// 최소 정의 (4개 필드만 필수)
+// Minimal definition (only 4 fields required)
 const myTheme = {
   id: 'brand',
   name: 'Brand Theme',
@@ -181,75 +183,75 @@ const myTheme = {
   primary: { base: '#2563EB' },
 };
 
-// 81개 토큰 자동 생성
+// Generates 81 tokens automatically
 const resolved = generateColorSet(myTheme);
 
-// CSS Custom Properties 출력
+// Output CSS Custom Properties
 const css = generateThemeCSS(resolved);
 ```
 
 ### Smart Defaults
 
-- `primary.base` 하나만 지정하면 81개 색상 토큰 자동 생성
-- 모드(light/dark)에 따라 적절한 기본값 적용
-- hover, active, alpha 상태 자동 파생
+- Specify only `primary.base` to auto-generate 81 color tokens
+- Appropriate defaults applied based on mode (light/dark)
+- Hover, active, alpha states automatically derived
 
-> 전체 스키마는 [docs/api/csp.md](./docs/api/csp.md)에서 확인할 수 있습니다.
+> See [docs/api/csp.md](./docs/api/csp.md) for the complete schema.
 
-## 개발
+## Development
 
-### 요구사항
+### Requirements
 
 - Node.js >= 18
 - pnpm >= 10.28.2
 
-### 설치 및 실행
+### Setup & Commands
 
 ```bash
-# 의존성 설치
+# Install dependencies
 pnpm install
 
-# 개발 모드
+# Development mode
 pnpm dev
 
-# 빌드
+# Build
 pnpm build
 
-# Storybook 실행
+# Run Storybook
 pnpm --filter @woosgem/ds-storybook dev
 
-# 테스트
+# Run tests
 pnpm test:all
 ```
 
-### 프로젝트 구조
+### Project Structure
 
 ```
 woosgem/
 ├── packages/
-│   ├── ds-core/      # 컴포넌트 정의 + CSP + 토큰 시스템
-│   ├── ds-react/     # React 컴포넌트 (15개)
-│   ├── ds-vue/       # Vue 컴포넌트 (15개)
-│   ├── ds-styles/    # SCSS 스타일 및 테마 (default/dark)
-│   ├── ds-icons/     # SVG 아이콘 에셋 (sm/md/lg)
-│   ├── ds-test/      # 통합 테스트 스위트 (1,136개 테스트)
-│   ├── ds-storybook/ # Storybook (106개 스토리)
-│   └── utils/        # 유틸리티 함수
-├── turbo.json         # Turborepo 설정
+│   ├── ds-core/      # Component definitions + CSP + token system
+│   ├── ds-react/     # React components (15)
+│   ├── ds-vue/       # Vue components (15)
+│   ├── ds-styles/    # SCSS styles and themes (default/dark)
+│   ├── ds-icons/     # SVG icon assets (sm/md/lg)
+│   ├── ds-test/      # Consolidated test suite (1,136 tests)
+│   ├── ds-storybook/ # Storybook (106 stories)
+│   └── utils/        # Utility functions
+├── turbo.json         # Turborepo configuration
 └── pnpm-workspace.yaml
 ```
 
-## 기여하기
+## Contributing
 
-### 새 컴포넌트 추가
+### Adding a New Component
 
-1. `packages/ds-core/src/components`에 컴포넌트 정의 추가
-2. `packages/ds-styles/src/components`에 스타일 추가
-3. `packages/ds-react/src` 및 `packages/ds-vue/src`에 프레임워크별 구현 추가
-4. `packages/ds-storybook/src/stories`에 스토리 추가
-5. `packages/ds-test/src`에 테스트 추가
+1. Add component definition in `packages/ds-core/src/components`
+2. Add styles in `packages/ds-styles/src/components`
+3. Add framework implementations in `packages/ds-react/src` and `packages/ds-vue/src`
+4. Add stories in `packages/ds-storybook/src/stories`
+5. Add tests in `packages/ds-test/src`
 
-### 새 테마 추가 (CSP 사용)
+### Adding a New Theme (Using CSP)
 
 ```typescript
 import { generateColorSet, generateThemeCSS } from '@woosgem/ds-core';
@@ -259,12 +261,12 @@ const newTheme = {
   name: 'Custom Theme',
   mode: 'light',
   primary: { base: '#YOUR_COLOR' },
-  // 선택사항: secondary, semantic, text, background 등
+  // Optional: secondary, semantic, text, background, etc.
 };
 
 const css = generateThemeCSS(generateColorSet(newTheme));
 ```
 
-## 라이선스
+## License
 
 MIT
