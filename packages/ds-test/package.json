@@ -1,5 +1,5 @@
 {
-  "name": "@woosgem/ds-test",
+  "name": "@woosgem-dev/test",
   "version": "0.0.1",
   "description": "Unified test suite for WooSGem Design System",
   "author": "woosgem",
@@ -10,7 +10,7 @@
   "types": "./src/index.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hhk9292/woosgem.git",
+    "url": "https://github.com/woosgem-dev/woosgem.git",
     "directory": "packages/ds-test"
   },
   "scripts": {
@@ -19,10 +19,10 @@
     "test:log": "tsx scripts/test-with-log.ts"
   },
   "dependencies": {
-    "@woosgem/ds-core": "workspace:*",
-    "@woosgem/ds-lit": "workspace:*",
-    "@woosgem/ds-react": "workspace:*",
-    "@woosgem/ds-vue": "workspace:*"
+    "@woosgem-dev/core": "workspace:*",
+    "@woosgem-dev/lit": "workspace:*",
+    "@woosgem-dev/react": "workspace:*",
+    "@woosgem-dev/vue": "workspace:*"
   },
   "devDependencies": {
     "@open-wc/testing": "^4.0.0",

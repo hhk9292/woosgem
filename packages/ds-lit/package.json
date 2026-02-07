@@ -1,5 +1,5 @@
 {
-  "name": "@woosgem/ds-lit",
+  "name": "@woosgem-dev/lit",
   "version": "0.0.1",
   "description": "WooSGem Design System - Lit Web Components",
   "type": "module",
@@ -25,14 +25,14 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@woosgem/ds-core": "workspace:*",
+    "@woosgem-dev/core": "workspace:*",
     "lit": "^3.2.0"
   },
   "devDependencies": {
     "typescript": "^5.4.0"
   },
   "peerDependencies": {
-    "@woosgem/ds-styles": "workspace:*"
+    "@woosgem-dev/styles": "workspace:*"
   },
   "keywords": [
     "design-system",

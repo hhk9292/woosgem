@@ -8,7 +8,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hhk9292/woosgem.git"
+    "url": "https://github.com/woosgem-dev/woosgem.git"
   },
   "scripts": {
     "build": "turbo build",

@@ -1,14 +1,17 @@
 {
-  "name": "@woosgem/ds-styles",
+  "name": "@woosgem-dev/styles",
   "version": "0.0.1",
   "description": "SCSS styles and theme system for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "main": "./dist/index.css",
   "style": "./dist/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hhk9292/woosgem.git",
+    "url": "https://github.com/woosgem-dev/woosgem.git",
     "directory": "packages/ds-styles"
   },
   "exports": {

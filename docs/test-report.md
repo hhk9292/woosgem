@@ -19,4 +19,4 @@
 |--------|------------|----------|
 | @woosgem/ds-test | 1136 passed | 68% |
 
-> [GitHub Actions 상세 로그 보기](https://github.com/hhk9292/woosgem/actions/workflows/test.yml)
+> [GitHub Actions 상세 로그 보기](https://github.com/woosgem-dev/woosgem/actions/workflows/test.yml)

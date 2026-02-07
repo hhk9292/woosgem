@@ -60,10 +60,10 @@ importers:
 
   packages/ds-lit:
     dependencies:
-      '@woosgem/ds-core':
+      '@woosgem-dev/core':
         specifier: workspace:*
         version: link:../ds-core
-      '@woosgem/ds-styles':
+      '@woosgem-dev/styles':
         specifier: workspace:*
         version: link:../ds-styles
       lit:
@@ -76,7 +76,7 @@ importers:
 
   packages/ds-react:
     dependencies:
-      '@woosgem/ds-core':
+      '@woosgem-dev/core':
         specifier: workspace:*
         version: link:../ds-core
     devDependencies:
@@ -113,13 +113,13 @@ importers:
 
   packages/ds-storybook:
     dependencies:
-      '@woosgem/ds-core':
+      '@woosgem-dev/core':
         specifier: workspace:*
         version: link:../ds-core
-      '@woosgem/ds-react':
+      '@woosgem-dev/react':
         specifier: workspace:*
         version: link:../ds-react
-      '@woosgem/ds-styles':
+      '@woosgem-dev/styles':
         specifier: workspace:*
         version: link:../ds-styles
     devDependencies:
@@ -177,16 +177,16 @@ importers:
 
   packages/ds-test:
     dependencies:
-      '@woosgem/ds-core':
+      '@woosgem-dev/core':
         specifier: workspace:*
         version: link:../ds-core
-      '@woosgem/ds-lit':
+      '@woosgem-dev/lit':
         specifier: workspace:*
         version: link:../ds-lit
-      '@woosgem/ds-react':
+      '@woosgem-dev/react':
         specifier: workspace:*
         version: link:../ds-react
-      '@woosgem/ds-vue':
+      '@woosgem-dev/vue':
         specifier: workspace:*
         version: link:../ds-vue
     devDependencies:
@@ -241,7 +241,7 @@ importers:
 
   packages/ds-vue:
     dependencies:
-      '@woosgem/ds-core':
+      '@woosgem-dev/core':
         specifier: workspace:*
         version: link:../ds-core
     devDependencies:
