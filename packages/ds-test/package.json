@@ -1,6 +1,6 @@
 {
   "name": "@woosgem-dev/test",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unified test suite for WooSGem Design System",
   "author": "woosgem",
   "license": "MIT",
@@ -43,3 +43,4 @@
     "vue": "^3.5.13"
   }
 }
+
