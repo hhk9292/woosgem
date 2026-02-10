@@ -215,7 +215,7 @@ describe('Avatar', () => {
       expect(screen.getByLabelText('User avatar')).toHaveAttribute('id', 'user-avatar');
     });
 
-    it('TC-O140: aria-describedby 성 달 용', () => {
+    it('TC-O140: aria-describedby 속성 전달 적용', () => {
       render(Avatar, {
         attrs: { 'aria-describedby': 'avatar-desc', 'aria-label': 'User avatar' },
       });

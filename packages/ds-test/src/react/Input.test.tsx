@@ -55,7 +55,7 @@ describe('Input', () => {
       render(<Input error aria-label="error input" />);
       const input = screen.getByRole('textbox');
 
-      // Core??data-state='error' ?용
+      // Core는 data-state='error' 적용
       expect(input).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(input).toHaveAttribute('data-state', 'error');
     });
@@ -66,18 +66,18 @@ describe('Input', () => {
       render(<Input success aria-label="success input" />);
       const input = screen.getByRole('textbox');
 
-      // Core??data-state='success' ?용
+      // Core는 data-state='success' 적용
       expect(input).toHaveAttribute('data-state', coreAttrs['data-state']);
       expect(input).toHaveAttribute('data-state', 'success');
     });
 
-    it('TC-R106: error가 success보다 선위가 다', () => {
+    it('TC-R106: error가 success보다 우선순위가 높다', () => {
       const coreAttrs = InputDef.mapPropsToAttrs({ error: true, success: true });
 
       render(<Input error success aria-label="error+success input" />);
       const input = screen.getByRole('textbox');
 
-      // error > success > disabled ?선?위
+      // error > success > disabled 우선순위
       expect(coreAttrs['data-state']).toBe('error');
       expect(input).toHaveAttribute('data-state', 'error');
     });
@@ -140,7 +140,7 @@ describe('Input', () => {
       expect(handleBlur).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R203: disabled 태서 력 는', async () => {
+    it('TC-R203: disabled 상태에서 입력되지 않는다', async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -155,7 +155,7 @@ describe('Input', () => {
   });
 
   describe('React 전용 props', () => {
-    it('TC-R300: placeholder가 더링된', () => {
+    it('TC-R300: placeholder가 렌더링된다', () => {
       render(<Input placeholder="Enter text" aria-label="test input" />);
       expect(screen.getByPlaceholderText('Enter text')).toBeInTheDocument();
     });
@@ -183,7 +183,7 @@ describe('Input', () => {
       expect(screen.getByRole('textbox')).toHaveAttribute('type', 'email');
     });
 
-    it('TC-R305: name prop 적용된다', () => {
+    it('TC-R305: name prop이 적용된다', () => {
       render(<Input name="email" aria-label="email input" />);
       expect(screen.getByRole('textbox')).toHaveAttribute('name', 'email');
     });

@@ -180,7 +180,7 @@ describe('Input', () => {
   });
 
   describe('Vue 전용 props', () => {
-    it('TC-V300: placeholder가 더링된', () => {
+    it('TC-V300: placeholder가 렌더링된다', () => {
       render(Input, {
         attrs: { placeholder: 'Enter text', 'aria-label': 'test input' },
       });

@@ -8,7 +8,7 @@ import { Overlay as OverlayDef } from '@woosgem-dev/core';
 
 describe('Overlay (Lit)', () => {
   describe('Core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과 치다', async () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = OverlayDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Overlay>>(html`
@@ -38,7 +38,8 @@ describe('Overlay (Lit)', () => {
         <wg-overlay blur></wg-overlay>
       `);
 
-      // Boolean attribute???문자?로 ?정??      expect(el.hasAttribute('data-blur')).toBe(true);
+      // Boolean attribute는 문자열로 설정됨
+      expect(el.hasAttribute('data-blur')).toBe(true);
       expect(coreAttrs['data-blur']).toBe(true);
     });
 
@@ -65,7 +66,7 @@ describe('Overlay (Lit)', () => {
       expect(el.textContent?.trim()).toContain('Overlay Content');
     });
 
-    it('TC-L301: 로티 변성데트다', async () => {
+    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
       const el = await fixture<InstanceType<typeof Overlay>>(html`
         <wg-overlay opacity="medium"></wg-overlay>
       `);

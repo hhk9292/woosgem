@@ -69,7 +69,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-divider', String(coreAttrs['data-divider']));
     });
 
-    it('TC-V105: selected + disabled 시 true selected 선', () => {
+    it('TC-V105: selected + disabled 동시 true 시 selected 우선', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(ListItem, {
@@ -103,7 +103,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-divider', 'true');
     });
 
-    it('TC-V107: variant: default가 core 결과 치다', () => {
+    it('TC-V107: variant: default가 core 결과와 일치한다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ variant: 'default' });
 
       render(ListItem, {
@@ -115,7 +115,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('data-variant', coreAttrs['data-variant']);
     });
 
-    it('TC-V108: divider: falsedata-divider가 다', () => {
+    it('TC-V108: divider: false면 data-divider가 없다', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ divider: false });
 
       render(ListItem, {
@@ -145,7 +145,7 @@ describe('ListItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-V201: disabled 태서onClick출다 (lidisabled 미', async () => {
+    it('TC-V201: disabled 상태에서 onClick 호출된다 (li는 disabled 미지원)', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -157,7 +157,7 @@ describe('ListItem', () => {
 
       await user.click(item);
 
-      // li ?소???이?브 disabled?지?하지 ?으므??릭 ?벤?? 발생??
+      // li 요소는 네이티브 disabled를 지원하지 않으므로 클릭 이벤트가 발생함
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
@@ -179,9 +179,9 @@ describe('ListItem', () => {
       expect(item).toHaveClass('custom-class');
     });
 
-    // Note: role? PROTECTED_ATTRS???함?어 ?어 ?터링됨
-    // ListItem? 기본?으?li ?소???listitem role??가?
-    it('TC-V302: listitem role기본 적용된다', () => {
+    // Note: role은 PROTECTED_ATTRS에 포함되어 있어 필터링됨
+    // ListItem은 기본적으로 li 요소라 listitem role을 가짐
+    it('TC-V302: listitem role이 기본 적용된다', () => {
       render(ListItem, {
         slots: { default: 'Option' },
       });

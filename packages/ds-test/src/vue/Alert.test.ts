@@ -100,17 +100,17 @@ describe('Alert (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 subtle다', () => {
+    it('TC-C010: variant 기본값이 subtle이다', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('data-variant')).toBe('subtle');
     });
 
-    it('TC-C011: status 기본값 info다', () => {
+    it('TC-C011: status 기본값이 info이다', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('data-status')).toBe('info');
     });
 
-    it('TC-C012: closable 기본값 false다 (성 음)', () => {
+    it('TC-C012: closable 기본값이 false이다 (속성 없음)', () => {
       const wrapper = mount(Alert);
       expect(wrapper.attributes('data-closable')).toBeUndefined();
     });
@@ -142,7 +142,7 @@ describe('Alert (Vue)', () => {
       expect(wrapper.attributes('data-status')).toBe('error');
     });
 
-    it('TC-O132: 보호 성 role 버이차단', () => {
+    it('TC-O132: 보호 속성 role 오버라이드 차단', () => {
       const wrapper = mount(Alert, {
         attrs: { role: 'status' },
       });

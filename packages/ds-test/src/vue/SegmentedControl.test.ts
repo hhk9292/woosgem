@@ -63,7 +63,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-disabled', String(coreAttrs['data-disabled']));
     });
 
-    it('TC-V104: role?  group다', () => {
+    it('TC-V104: role이 group이다', () => {
       render(SegmentedControl, {
         attrs: { 'aria-label': 'View options' },
         slots: { default: 'Content' },
@@ -73,7 +73,7 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('role', 'group');
     });
 
-    it('TC-V105: size: smcore 결과 치다', () => {
+    it('TC-V105: size: sm이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({ size: 'sm' });
 
       render(SegmentedControl, {
@@ -171,12 +171,12 @@ describe('SegmentedControl', () => {
       expect(group).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O201: 보호 성 role 버이차단', () => {
+    it('TC-O201: 보호 속성 role 오버라이드 차단', () => {
       render(SegmentedControl, {
         attrs: { role: 'tablist', 'aria-label': 'View options' },
         slots: { default: 'Content' },
       });
-      // group role??????
+      // group role이 유지되어야 한다
       expect(screen.getByRole('group')).toBeInTheDocument();
     });
 
@@ -239,7 +239,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toBeDisabled();
     });
 
-    it('TC-I103: selected + disabled 시 true selected 선', () => {
+    it('TC-I103: selected + disabled 동시 true 시 selected 우선', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(SegmentedControlItem, {

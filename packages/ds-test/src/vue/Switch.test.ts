@@ -84,21 +84,21 @@ describe('Switch (Vue)', () => {
   });
 
   describe('상태 변경', () => {
-    it('TC-S100: checked 태가 적용된다', () => {
+    it('TC-S100: checked 상태가 적용된다', () => {
       const wrapper = mount(Switch, { props: { checked: true } });
 
       expect(wrapper.attributes('data-state')).toBe('checked');
       expect(wrapper.attributes('aria-checked')).toBe('true');
     });
 
-    it('TC-S101: disabled 태가 적용된다', () => {
+    it('TC-S101: disabled 상태가 적용된다', () => {
       const wrapper = mount(Switch, { props: { disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('disabled');
       expect(wrapper.attributes('disabled')).toBeDefined();
     });
 
-    it('TC-S102: checked + disabled 태가 적용된다', () => {
+    it('TC-S102: checked + disabled 상태가 적용된다', () => {
       const wrapper = mount(Switch, { props: { checked: true, disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('checked-disabled');
@@ -113,41 +113,41 @@ describe('Switch (Vue)', () => {
       expect(wrapper.attributes('role')).toBe('switch');
     });
 
-    it('TC-A101: aria-checked가 checked 태반영다', () => {
+    it('TC-A101: aria-checked가 checked 상태를 반영한다', () => {
       const wrapper = mount(Switch, { props: { checked: false } });
       expect(wrapper.attributes('aria-checked')).toBe('false');
     });
 
-    it('TC-A102: aria-checked가 true반영다', () => {
+    it('TC-A102: aria-checked가 true를 반영한다', () => {
       const wrapper = mount(Switch, { props: { checked: true } });
       expect(wrapper.attributes('aria-checked')).toBe('true');
     });
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값이 md이다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C011: color 기본값 primary다', () => {
+    it('TC-C011: color 기본값이 primary이다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('data-color')).toBe('primary');
     });
 
-    it('TC-C012: checked 기본값 false다', () => {
+    it('TC-C012: checked 기본값이 false이다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('aria-checked')).toBe('false');
     });
 
-    it('TC-C013: disabled 기본값 false다', () => {
+    it('TC-C013: disabled 기본값이 false이다', () => {
       const wrapper = mount(Switch);
       expect(wrapper.attributes('disabled')).toBeUndefined();
     });
   });
 
   describe('이벤트 핸들러', () => {
-    it('TC-O150: click 벤 발생다', async () => {
+    it('TC-O150: click 이벤트 발생한다', async () => {
       const handleClick = vi.fn();
       const wrapper = mount(Switch, {
         attrs: { onClick: handleClick },
@@ -176,7 +176,7 @@ describe('Switch (Vue)', () => {
       expect(wrapper.attributes('data-size')).toBe('lg');
     });
 
-    it('TC-O131: 보호 성 role 버이차단', () => {
+    it('TC-O131: 보호 속성 role 오버라이드 차단', () => {
       const wrapper = mount(Switch, {
         attrs: { role: 'checkbox' },
       });

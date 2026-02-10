@@ -8,7 +8,7 @@ import { Tab as TabDef } from '@woosgem-dev/core';
 
 describe('Tab (Lit)', () => {
   describe('Core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과 치다', async () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = TabDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Tab>>(html`
@@ -75,7 +75,7 @@ describe('Tab (Lit)', () => {
       expect(el.textContent?.trim()).toBe('Tab Title');
     });
 
-    it('TC-L301: 로티 변성데트다', async () => {
+    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
       const el = await fixture<InstanceType<typeof Tab>>(html`
         <wg-tab></wg-tab>
       `);

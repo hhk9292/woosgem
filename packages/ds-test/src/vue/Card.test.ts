@@ -77,12 +77,12 @@ describe('Card (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 outlined다', () => {
+    it('TC-C010: variant 기본값이 outlined이다', () => {
       const wrapper = mount(Card);
       expect(wrapper.attributes('data-variant')).toBe('outlined');
     });
 
-    it('TC-C011: padding 기본값 md다', () => {
+    it('TC-C011: padding 기본값이 md이다', () => {
       const wrapper = mount(Card);
       expect(wrapper.attributes('data-padding')).toBe('md');
     });

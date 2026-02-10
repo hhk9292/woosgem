@@ -78,7 +78,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-selected', 'true');
     });
 
-    it('TC-R106: selected + disabled 시 trueselected 선', () => {
+    it('TC-R106: selected + disabled 동시 true 시 selected 우선', () => {
       const coreAttrs = ListItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -108,7 +108,7 @@ describe('ListItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R201: disabled 태서onClick출다 (lidisabled 미', async () => {
+    it('TC-R201: disabled 상태에서 onClick 호출된다 (li는 disabled 미지원)', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -121,7 +121,7 @@ describe('ListItem', () => {
 
       await user.click(item!);
 
-      // li ?소???이?브 disabled?지?하지 ?으므??릭??발생
+      // li 요소는 네이티브 disabled를 지원하지 않으므로 클릭이 발생
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
@@ -167,7 +167,7 @@ describe('ListItem', () => {
       expect(item).toHaveClass('custom-class');
     });
 
-    it('TC-R303: role prop 적용된다', () => {
+    it('TC-R303: role prop이 적용된다', () => {
       render(<ListItem role="option">Option</ListItem>);
       const item = screen.getByRole('option');
 
@@ -201,7 +201,7 @@ describe('ListItem', () => {
       expect(item).toHaveClass('c');
     });
 
-    it('TC-O110: style 라용', () => {
+    it('TC-O110: style 인라인 적용', () => {
       render(<ListItem style={{ padding: 8 }}>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -220,14 +220,14 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('aria-label', 'Menu item');
     });
 
-    it('TC-O141: aria-label 적용', () => {
+    it('TC-O141: aria-labelledby 적용', () => {
       render(<ListItem aria-labelledby="label-id">Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('aria-labelledby', 'label-id');
     });
 
-    it('TC-O143: aria-current 용', () => {
+    it('TC-O143: aria-current 적용', () => {
       render(<ListItem aria-current="page">Current</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -241,7 +241,7 @@ describe('ListItem', () => {
       expect(item).toHaveAttribute('id', 'my-item');
     });
 
-    it('TC-O161: role 성 용', () => {
+    it('TC-O161: role 속성 적용', () => {
       render(<ListItem role="option">Option</ListItem>);
       const item = screen.getByRole('option');
 
@@ -290,14 +290,14 @@ describe('ListItem', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 default다', () => {
+    it('TC-C010: variant 기본값 default이다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).toHaveAttribute('data-variant', 'default');
     });
 
-    it('TC-C011: selected 기본값 false다', () => {
+    it('TC-C011: selected 기본값 false이다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
@@ -305,14 +305,14 @@ describe('ListItem', () => {
       expect(item).not.toHaveAttribute('aria-selected');
     });
 
-    it('TC-C012: disabled 기본값 false다', () => {
+    it('TC-C012: disabled 기본값 false이다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 
       expect(item).not.toHaveAttribute('aria-disabled');
     });
 
-    it('TC-C013: divider 기본값 false다', () => {
+    it('TC-C013: divider 기본값 false이다', () => {
       render(<ListItem>Item</ListItem>);
       const item = document.querySelector('.list-item');
 

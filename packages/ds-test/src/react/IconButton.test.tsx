@@ -88,7 +88,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-C111: variant: outline 적용된다', () => {
+    it('TC-C111: variant: outline이 적용된다', () => {
       render(<IconButton variant="outline" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -116,7 +116,7 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-C141: shape: circle 적용된다', () => {
+    it('TC-C141: shape: circle이 적용된다', () => {
       render(<IconButton shape="circle" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -137,7 +137,7 @@ describe('IconButton', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R201: disabled 태서 onClick출 는', async () => {
+    it('TC-R201: disabled 상태에서 onClick 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -197,8 +197,8 @@ describe('IconButton', () => {
       expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-R304: type명시 으성다', () => {
-      // IconButton? 기본 type???정?? ?음 (Button??름)
+    it('TC-R304: type 미명시 시 기본값 설정된다', () => {
+      // IconButton은 기본 type을 지정하지 않음 (Button과 다름)
       render(<IconButton aria-label="Icon">X</IconButton>);
       expect(screen.getByRole('button')).not.toHaveAttribute('type');
     });
@@ -208,7 +208,7 @@ describe('IconButton', () => {
       expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Close');
     });
 
-    it('TC-R308: disabled prop 적용된다', () => {
+    it('TC-R308: disabled prop이 적용된다', () => {
       render(<IconButton disabled aria-label="Disabled">X</IconButton>);
       expect(screen.getByRole('button')).toBeDisabled();
     });
@@ -233,7 +233,7 @@ describe('IconButton', () => {
       expect(btn).toHaveClass('c');
     });
 
-    it('TC-O110: style 라용', () => {
+    it('TC-O110: style 인라인 적용', () => {
       render(<IconButton style={{ marginTop: 8 }} aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -252,14 +252,14 @@ describe('IconButton', () => {
       expect(btn).toHaveAttribute('aria-label', 'Close');
     });
 
-    it('TC-O141: aria-pressed 용', () => {
+    it('TC-O141: aria-pressed 적용', () => {
       render(<IconButton aria-pressed="true" aria-label="Toggle">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('aria-pressed', 'true');
     });
 
-    it('TC-O142: aria-expanded 용', () => {
+    it('TC-O142: aria-expanded 적용', () => {
       render(<IconButton aria-expanded="false" aria-label="Expand">X</IconButton>);
       const btn = screen.getByRole('button');
 
@@ -322,43 +322,43 @@ describe('IconButton', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 filled다', () => {
+    it('TC-C010: variant 기본값 filled이다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-variant', 'filled');
     });
 
-    it('TC-C011: color 기본값 primary다', () => {
+    it('TC-C011: color 기본값 primary이다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-color', 'primary');
     });
 
-    it('TC-C012: size 기본값 md다', () => {
+    it('TC-C012: size 기본값 md이다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C013: shape 기본값 square다', () => {
+    it('TC-C013: shape 기본값 square이다', () => {
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).toHaveAttribute('data-shape', 'square');
     });
 
-    it('TC-D100: type명시 으성다', () => {
-      // IconButton? 기본 type???정?? ?음
+    it('TC-D100: type 미명시 시 기본값 설정된다', () => {
+      // IconButton은 기본 type을 지정하지 않음
       render(<IconButton aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 
       expect(btn).not.toHaveAttribute('type');
     });
 
-    it('TC-D101: type="button" 명시 button로 더', () => {
+    it('TC-D101: type="button" 명시 시 button으로 렌더링', () => {
       render(<IconButton type="button" aria-label="Icon">X</IconButton>);
       const btn = screen.getByRole('button');
 

@@ -55,14 +55,14 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', 'lg');
     });
 
-    it('TC-V104: role?  separator다', () => {
+    it('TC-V104: role이 separator이다', () => {
       render(Divider);
       const divider = screen.getByRole('separator');
 
       expect(divider).toHaveAttribute('role', 'separator');
     });
 
-    it('TC-V105: spacing: nonecore 결과 치다', () => {
+    it('TC-V105: spacing: none이 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ spacing: 'none' });
 
       render(Divider, {
@@ -73,7 +73,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', coreAttrs['data-spacing']);
     });
 
-    it('TC-V106: spacing: smcore 결과 치다', () => {
+    it('TC-V106: spacing: sm이 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ spacing: 'sm' });
 
       render(Divider, {
@@ -84,7 +84,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', coreAttrs['data-spacing']);
     });
 
-    it('TC-V107: orientation: horizontalcore 결과 치다', () => {
+    it('TC-V107: orientation: horizontal이 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ orientation: 'horizontal' });
 
       render(Divider, {
@@ -96,7 +96,7 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('aria-orientation', 'horizontal');
     });
 
-    it('TC-V108: variant: solid가 core 결과 치다', () => {
+    it('TC-V108: variant: solid가 core 결과와 일치한다', () => {
       const coreAttrs = DividerDef.mapPropsToAttrs({ variant: 'solid' });
 
       render(Divider, {
@@ -194,11 +194,11 @@ describe('Divider', () => {
       expect(divider).toHaveAttribute('data-spacing', 'lg');
     });
 
-    it('TC-O203: 보호 성 role 버이차단', () => {
+    it('TC-O203: 보호 속성 role 오버라이드 차단', () => {
       render(Divider, {
         attrs: { role: 'presentation' },
       });
-      // separator role??????
+      // separator role이 유지되어야 한다
       expect(screen.getByRole('separator')).toBeInTheDocument();
     });
 

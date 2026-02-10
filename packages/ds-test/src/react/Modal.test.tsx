@@ -106,7 +106,7 @@ describe('Modal (React)', () => {
   });
 
   describe('닫기 동작', () => {
-    it('TC-CL100: ESC 르onClose가 출다', () => {
+    it('TC-CL100: ESC 키 누르면 onClose가 호출된다', () => {
       const onClose = vi.fn();
 
       render(
@@ -122,7 +122,7 @@ describe('Modal (React)', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-CL101: disableEscapeKey ESC히지 는', () => {
+    it('TC-CL101: disableEscapeKey 시 ESC로 닫히지 않는다', () => {
       const onClose = vi.fn();
 
       render(
@@ -138,7 +138,7 @@ describe('Modal (React)', () => {
       expect(onClose).not.toHaveBeenCalled();
     });
 
-    it('TC-CL102: 버이 릭 onClose가 출다', () => {
+    it('TC-CL102: 오버레이 클릭 시 onClose가 호출된다', () => {
       const onClose = vi.fn();
 
       render(
@@ -157,7 +157,7 @@ describe('Modal (React)', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-CL103: disableOverlayClick 버이 릭로 히지 는', () => {
+    it('TC-CL103: disableOverlayClick 시 오버레이 클릭으로 닫히지 않는다', () => {
       const onClose = vi.fn();
 
       render(
@@ -174,7 +174,7 @@ describe('Modal (React)', () => {
       expect(onClose).not.toHaveBeenCalled();
     });
 
-    it('TC-CL104: closable=false ESC? 버이 릭 모두 비활화다', () => {
+    it('TC-CL104: closable=false 시 ESC와 오버레이 클릭 모두 비활성화된다', () => {
       const onClose = vi.fn();
 
       render(
@@ -197,7 +197,7 @@ describe('Modal (React)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값 md이다', () => {
       render(
         <Modal open>
           <ModalBody>Content</ModalBody>
@@ -208,7 +208,7 @@ describe('Modal (React)', () => {
   });
 
   describe('ModalBody', () => {
-    it('TC-BS100: open body overflow가 hidden로 정다', () => {
+    it('TC-BS100: open 시 body overflow가 hidden으로 설정된다', () => {
       render(
         <Modal open>
           <ModalBody>Content</ModalBody>

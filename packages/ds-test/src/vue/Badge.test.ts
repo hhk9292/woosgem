@@ -245,7 +245,7 @@ describe('Badge', () => {
       expect(screen.getByText('Badge')).toHaveAttribute('id', 'my-badge');
     });
 
-    it('TC-O140: aria-describedby 성 달 용', () => {
+    it('TC-O140: aria-describedby 속성 전달 적용', () => {
       render(Badge, {
         attrs: { 'aria-describedby': 'badge-desc' },
         slots: { default: 'Badge' },
@@ -253,7 +253,7 @@ describe('Badge', () => {
       expect(screen.getByText('Badge')).toHaveAttribute('aria-describedby', 'badge-desc');
     });
 
-    it('TC-O141: title 성 달 용', () => {
+    it('TC-O141: title 속성 전달 적용', () => {
       render(Badge, {
         attrs: { title: 'Status: Active' },
         slots: { default: 'Active' },

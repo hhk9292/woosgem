@@ -84,7 +84,7 @@ describe('Tab', () => {
       expect(tab).toHaveAttribute('data-full-width', String(coreAttrs['data-full-width']));
     });
 
-    it('TC-V106: role?  tab다', () => {
+    it('TC-V106: role이 tab이다', () => {
       const coreAttrs = TabDef.mapPropsToAttrs({});
 
       render(Tab, { slots: { default: 'Tab' } });
@@ -94,7 +94,7 @@ describe('Tab', () => {
       expect(tab).toHaveAttribute('role', 'tab');
     });
 
-    it('TC-V107: selected + disabled 시 true selected 선', () => {
+    it('TC-V107: selected + disabled 동시 true 시 selected 우선', () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(Tab, {
@@ -159,7 +159,7 @@ describe('Tab', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('TC-V202: selected 태서 onClick출다', async () => {
+    it('TC-V202: selected 상태에서 onClick 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -262,7 +262,7 @@ describe('Tab', () => {
       expect(tab).toHaveAttribute('data-state', 'selected');
     });
 
-    it('TC-O203: 보호 성 role 버이차단', () => {
+    it('TC-O203: 보호 속성 role 오버라이드 차단', () => {
       render(Tab, {
         attrs: { role: 'button' },
         slots: { default: 'Tab' },
@@ -301,7 +301,7 @@ describe('Tab', () => {
       expect(screen.getByRole('tab')).toHaveAttribute('id', 'my-tab');
     });
 
-    it('TC-O140: aria-controls 성 달 용', () => {
+    it('TC-O140: aria-controls 속성 전달 적용', () => {
       render(Tab, {
         attrs: { 'aria-controls': 'panel-1' },
         slots: { default: 'Tab' },

@@ -38,7 +38,7 @@ describe('Textarea (Vue)', () => {
   });
 
   describe('Variant 변형', () => {
-    it('TC-C110: variant: outline 적용된다', () => {
+    it('TC-C110: variant: outline이 적용된다', () => {
       const wrapper = mount(Textarea, { props: { variant: 'outline' } });
       expect(wrapper.attributes('data-variant')).toBe('outline');
     });
@@ -89,21 +89,21 @@ describe('Textarea (Vue)', () => {
   });
 
   describe('상태 변경', () => {
-    it('TC-S100: disabled 태가 적용된다', () => {
+    it('TC-S100: disabled 상태가 적용된다', () => {
       const wrapper = mount(Textarea, { props: { disabled: true } });
 
       expect(wrapper.attributes('data-state')).toBe('disabled');
       expect(wrapper.attributes('disabled')).toBeDefined();
     });
 
-    it('TC-S101: error 태가 적용된다', () => {
+    it('TC-S101: error 상태가 적용된다', () => {
       const wrapper = mount(Textarea, { props: { error: true } });
 
       expect(wrapper.attributes('data-state')).toBe('error');
       expect(wrapper.attributes('aria-invalid')).toBe('true');
     });
 
-    it('TC-S102: disabled가 error보다 선다', () => {
+    it('TC-S102: disabled가 error보다 우선한다', () => {
       const wrapper = mount(Textarea, { props: { disabled: true, error: true } });
 
       expect(wrapper.attributes('data-state')).toBe('disabled');
@@ -112,17 +112,17 @@ describe('Textarea (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 outline다', () => {
+    it('TC-C010: variant 기본값이 outline이다', () => {
       const wrapper = mount(Textarea);
       expect(wrapper.attributes('data-variant')).toBe('outline');
     });
 
-    it('TC-C011: size 기본값 md다', () => {
+    it('TC-C011: size 기본값이 md이다', () => {
       const wrapper = mount(Textarea);
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C012: resize 기본값 vertical다', () => {
+    it('TC-C012: resize 기본값이 vertical이다', () => {
       const wrapper = mount(Textarea);
       expect(wrapper.attributes('data-resize')).toBe('vertical');
     });
@@ -141,7 +141,7 @@ describe('Textarea (Vue)', () => {
   });
 
   describe('이벤트 핸들러', () => {
-    it('TC-O150: input 벤 발생다', async () => {
+    it('TC-O150: input 이벤트 발생한다', async () => {
       const wrapper = mount(Textarea);
 
       await wrapper.trigger('input');

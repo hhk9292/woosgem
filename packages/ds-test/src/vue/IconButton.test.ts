@@ -240,7 +240,7 @@ describe('IconButton', () => {
       expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Close dialog');
     });
 
-    it('TC-V304: disabled 성 적용된다', () => {
+    it('TC-V304: disabled 속성이 적용된다', () => {
       render(IconButton, {
         attrs: { disabled: true, 'aria-label': 'Disabled' },
         slots: { default: 'Icon' },
@@ -331,7 +331,7 @@ describe('IconButton', () => {
       expect(screen.getByRole('button')).toHaveAttribute('id', 'my-icon-btn');
     });
 
-    it('TC-O140: aria-describedby 성 달 용', () => {
+    it('TC-O140: aria-describedby 속성 전달 적용', () => {
       render(IconButton, {
         attrs: { 'aria-describedby': 'btn-desc', 'aria-label': 'Button' },
         slots: { default: 'Icon' },

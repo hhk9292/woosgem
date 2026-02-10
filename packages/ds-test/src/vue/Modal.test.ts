@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '@woosgem-dev/vue';
 
@@ -14,11 +14,8 @@ describe('Modal (Vue)', () => {
 
     it('TC-V101: open=true 시 렌더링된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, teleportTo: 'body' },
+        props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: {
-          stubs: { teleport: true },
-        },
       });
       expect(wrapper.text()).toContain('Content');
     });
@@ -27,9 +24,8 @@ describe('Modal (Vue)', () => {
   describe('Size 변형', () => {
     it('TC-C110: size: sm가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, size: 'sm', teleportTo: 'body' },
+        props: { open: true, size: 'sm', teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('data-size')).toBe('sm');
@@ -37,9 +33,8 @@ describe('Modal (Vue)', () => {
 
     it('TC-C111: size: md가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, size: 'md', teleportTo: 'body' },
+        props: { open: true, size: 'md', teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('data-size')).toBe('md');
@@ -47,9 +42,8 @@ describe('Modal (Vue)', () => {
 
     it('TC-C112: size: lg가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, size: 'lg', teleportTo: 'body' },
+        props: { open: true, size: 'lg', teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('data-size')).toBe('lg');
@@ -57,9 +51,8 @@ describe('Modal (Vue)', () => {
 
     it('TC-C113: size: xl가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, size: 'xl', teleportTo: 'body' },
+        props: { open: true, size: 'xl', teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('data-size')).toBe('xl');
@@ -67,9 +60,8 @@ describe('Modal (Vue)', () => {
 
     it('TC-C114: size: full가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, size: 'full', teleportTo: 'body' },
+        props: { open: true, size: 'full', teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('data-size')).toBe('full');
@@ -79,9 +71,8 @@ describe('Modal (Vue)', () => {
   describe('접근성', () => {
     it('TC-A100: role="dialog"가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, teleportTo: 'body' },
+        props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('role')).toBe('dialog');
@@ -89,9 +80,8 @@ describe('Modal (Vue)', () => {
 
     it('TC-A101: aria-modal=true가 적용된다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, teleportTo: 'body' },
+        props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('aria-modal')).toBe('true');
@@ -99,11 +89,10 @@ describe('Modal (Vue)', () => {
   });
 
   describe('닫기 동작', () => {
-    it('TC-CL100: 버이 릭 close 벤 발생다', async () => {
+    it('TC-CL100: 오버레이 클릭 시 close 이벤트 발생한다', async () => {
       const wrapper = mount(Modal, {
-        props: { open: true, teleportTo: 'body' },
+        props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
 
       const overlay = wrapper.find('.overlay');
@@ -112,11 +101,10 @@ describe('Modal (Vue)', () => {
       expect(wrapper.emitted('close')).toBeTruthy();
     });
 
-    it('TC-CL101: disableOverlayClick 버이 릭로 히지 는', async () => {
+    it('TC-CL101: disableOverlayClick 시 오버레이 클릭으로 닫히지 않는다', async () => {
       const wrapper = mount(Modal, {
-        props: { open: true, disableOverlayClick: true, teleportTo: 'body' },
+        props: { open: true, disableOverlayClick: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
 
       const overlay = wrapper.find('.overlay');
@@ -125,11 +113,10 @@ describe('Modal (Vue)', () => {
       expect(wrapper.emitted('close')).toBeFalsy();
     });
 
-    it('TC-CL102: closable=false 기 작비활화다', async () => {
+    it('TC-CL102: closable=false 시 닫기 동작 비활성화된다', async () => {
       const wrapper = mount(Modal, {
-        props: { open: true, closable: false, teleportTo: 'body' },
+        props: { open: true, closable: false, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
 
       const overlay = wrapper.find('.overlay');
@@ -140,11 +127,10 @@ describe('Modal (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값이 md이다', () => {
       const wrapper = mount(Modal, {
-        props: { open: true, teleportTo: 'body' },
+        props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
       const modal = wrapper.find('.modal');
       expect(modal.attributes('data-size')).toBe('md');
@@ -152,11 +138,10 @@ describe('Modal (Vue)', () => {
   });
 
   describe('v-model:open 지원', () => {
-    it('TC-VM100: update:open 벤 발생다', async () => {
+    it('TC-VM100: update:open 이벤트 발생한다', async () => {
       const wrapper = mount(Modal, {
-        props: { open: true, teleportTo: 'body' },
+        props: { open: true, teleportTo: false },
         slots: { default: 'Content' },
-        global: { stubs: { teleport: true } },
       });
 
       const overlay = wrapper.find('.overlay');

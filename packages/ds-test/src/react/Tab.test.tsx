@@ -88,14 +88,14 @@ describe('Tab', () => {
       expect(tab).toHaveAttribute('data-state', coreAttrs['data-state']);
     });
 
-    it('TC-R107: role tab다', () => {
+    it('TC-R107: role이 항상 tab이다', () => {
       render(<Tab>Home</Tab>);
       const tab = screen.getByRole('tab');
 
       expect(tab).toHaveAttribute('role', 'tab');
     });
 
-    it('TC-C134: selected + disabled 시 true selected 선', () => {
+    it('TC-C134: selected + disabled 동시 true 시 selected 우선', () => {
       const coreAttrs = TabDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -105,7 +105,7 @@ describe('Tab', () => {
       );
       const tab = screen.getByRole('tab');
 
-      // selected ?선
+      // selected 우선
       expect(coreAttrs['data-state']).toBe('selected');
       expect(tab).toHaveAttribute('data-state', 'selected');
       expect(tab).toBeDisabled();
@@ -125,7 +125,7 @@ describe('Tab', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R201: disabled 태서 onClick출 는', async () => {
+    it('TC-R201: disabled 상태에서 onClick 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -141,7 +141,7 @@ describe('Tab', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('TC-R202: selected 태서 onClick출다', async () => {
+    it('TC-R202: selected 상태에서 onClick 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -191,11 +191,11 @@ describe('Tab', () => {
       expect(screen.getByRole('tab')).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-R304: type명시 으기본 작 (submit)', () => {
-      // Tab? 기본 type???정?? ?음 (Button??름)
-      // 명시?으?type="button"???달?야 ??
+    it('TC-R304: type 미명시 시 기본 동작 (submit 방지)', () => {
+      // Tab은 기본 type을 지정하지 않음 (Button과 다름)
+      // 명시적으로 type="button"을 전달해야 함
       render(<Tab>Tab</Tab>);
-      // type ?성???으?브라?? 기본?submit???용??
+      // type 속성이 없으면 브라우저 기본값 submit이 적용됨
       expect(screen.getByRole('tab')).not.toHaveAttribute('type');
     });
 
@@ -234,7 +234,7 @@ describe('Tab', () => {
       expect(screen.getByRole('tab')).toHaveAttribute('aria-label', 'Close');
     });
 
-    it('TC-O142: aria-controls 용', () => {
+    it('TC-O142: aria-controls 적용', () => {
       render(<Tab aria-controls="panel-1">Tab 1</Tab>);
       expect(screen.getByRole('tab')).toHaveAttribute('aria-controls', 'panel-1');
     });
@@ -244,7 +244,7 @@ describe('Tab', () => {
       expect(screen.getByRole('tab')).toBeDisabled();
     });
 
-    it('TC-O162: selected=true + disabled=true selected 선', () => {
+    it('TC-O162: selected=true + disabled=true 시 selected 우선', () => {
       render(
         <Tab selected disabled>
           Both
@@ -301,7 +301,7 @@ describe('Tab', () => {
       expect(tab).not.toHaveAttribute('data-full-width');
     });
 
-    it('TC-O134: 보호 성 role 버이차단', () => {
+    it('TC-O134: 보호 속성 role 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Tab role="button">Tab</Tab>);
       const tab = screen.getByRole('tab');
@@ -319,11 +319,11 @@ describe('Tab', () => {
   });
 
   describe('기본값', () => {
-    it('TC-D100: type명시 으성다', () => {
+    it('TC-D100: type 미명시 시 기본값 설정된다', () => {
       render(<Tab>Tab</Tab>);
       const tab = screen.getByRole('tab');
 
-      // Tab? 기본 type???정?? ?음 (Button??르?
+      // Tab은 기본 type을 지정하지 않음 (Button과 다름)
       expect(tab).not.toHaveAttribute('type');
     });
 
@@ -334,7 +334,7 @@ describe('Tab', () => {
       expect(tab).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-D102: type="button" 명시 button로 더', () => {
+    it('TC-D102: type="button" 명시 시 button으로 렌더링', () => {
       render(<Tab type="button">Button</Tab>);
       const tab = screen.getByRole('tab');
 

@@ -41,7 +41,7 @@ describe('Toast (Vue)', () => {
       expect(wrapper.attributes('data-variant')).toBe('success');
     });
 
-    it('TC-C112: variant: warning 적용된다', () => {
+    it('TC-C112: variant: warning이 적용된다', () => {
       const wrapper = mount(Toast, { props: { variant: 'warning' } });
       expect(wrapper.attributes('data-variant')).toBe('warning');
     });
@@ -70,25 +70,25 @@ describe('Toast (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 info다', () => {
+    it('TC-C010: variant 기본값이 info이다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('data-variant')).toBe('info');
     });
 
-    it('TC-C011: position 기본값 top-right다', () => {
+    it('TC-C011: position 기본값이 top-right이다', () => {
       const wrapper = mount(Toast);
       expect(wrapper.attributes('data-position')).toBe('top-right');
     });
   });
 
   describe('visible/숨김', () => {
-    it('TC-V100: visible=false면 렌더링되지 않는다', () => {
+    it('TC-V100: visible=false이면 렌더링되지 않는다', () => {
       const wrapper = mount(Toast, { props: { visible: false } });
       // Should render nothing (null)
       expect(wrapper.html()).toSatisfy((html: string) => html === '' || html === '<!---->');
     });
 
-    it('TC-V101: visible=true면 더링된', () => {
+    it('TC-V101: visible=true이면 렌더링된다', () => {
       const wrapper = mount(Toast, {
         props: { visible: true },
         slots: { default: 'Visible' },
@@ -98,7 +98,7 @@ describe('Toast (Vue)', () => {
   });
 
   describe('Auto-dismiss', () => {
-    it('TC-AD100: duration close 벤 발생다', async () => {
+    it('TC-AD100: duration 후 close 이벤트 발생한다', async () => {
       const wrapper = mount(Toast, {
         props: { duration: 3000, visible: true },
       });
@@ -109,7 +109,7 @@ describe('Toast (Vue)', () => {
       expect(wrapper.emitted('close')).toBeTruthy();
     });
 
-    it('TC-AD101: duration=0면 동 힘비활화다', async () => {
+    it('TC-AD101: duration=0이면 자동 닫힘 비활성화된다', async () => {
       const wrapper = mount(Toast, {
         props: { duration: 0, visible: true },
       });
@@ -139,7 +139,7 @@ describe('Toast (Vue)', () => {
   });
 
   describe('visible/숨김', () => {
-    it('TC-VM100: update:visible 벤 발생다', async () => {
+    it('TC-VM100: update:visible 이벤트 발생한다', async () => {
       const wrapper = mount(Toast, {
         props: { visible: true, duration: 1000 },
       });

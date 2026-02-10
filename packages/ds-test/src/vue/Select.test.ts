@@ -77,29 +77,29 @@ describe('Select (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 outline다', () => {
+    it('TC-C010: variant 기본값이 outline이다', () => {
       const wrapper = mount(Select);
       expect(wrapper.attributes('data-variant')).toBe('outline');
     });
 
-    it('TC-C011: size 기본값 md다', () => {
+    it('TC-C011: size 기본값이 md이다', () => {
       const wrapper = mount(Select);
       expect(wrapper.attributes('data-size')).toBe('md');
     });
   });
 
   describe('상태', () => {
-    it('TC-S100: disabled 태가 적용된다', () => {
+    it('TC-S100: disabled 상태가 적용된다', () => {
       const wrapper = mount(Select, { props: { disabled: true } });
       expect(wrapper.attributes('data-state')).toBe('disabled');
     });
 
-    it('TC-S101: error 태가 적용된다', () => {
+    it('TC-S101: error 상태가 적용된다', () => {
       const wrapper = mount(Select, { props: { error: true } });
       expect(wrapper.attributes('data-state')).toBe('error');
     });
 
-    it('TC-S102: open 태가 적용된다', () => {
+    it('TC-S102: open 상태가 적용된다', () => {
       const wrapper = mount(Select, { props: { open: true } });
       expect(wrapper.attributes('data-state')).toBe('open');
     });

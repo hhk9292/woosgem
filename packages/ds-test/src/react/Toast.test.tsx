@@ -45,7 +45,7 @@ describe('Toast (React)', () => {
       expect(screen.getByRole('alert')).toHaveAttribute('data-variant', 'success');
     });
 
-    it('TC-C112: variant: warning 적용된다', () => {
+    it('TC-C112: variant: warning이 적용된다', () => {
       render(<Toast variant="warning">Warning</Toast>);
       expect(screen.getByRole('alert')).toHaveAttribute('data-variant', 'warning');
     });
@@ -74,31 +74,31 @@ describe('Toast (React)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 info다', () => {
+    it('TC-C010: variant 기본값 info이다', () => {
       render(<Toast>Message</Toast>);
       expect(screen.getByRole('alert')).toHaveAttribute('data-variant', 'info');
     });
 
-    it('TC-C011: position 기본값 top-right다', () => {
+    it('TC-C011: position 기본값 top-right이다', () => {
       render(<Toast>Message</Toast>);
       expect(screen.getByRole('alert')).toHaveAttribute('data-position', 'top-right');
     });
   });
 
   describe('visible/숨김', () => {
-    it('TC-V100: visible=false면 렌더링되지 않는다', () => {
+    it('TC-V100: visible=false이면 렌더링되지 않는다', () => {
       render(<Toast visible={false}>Hidden</Toast>);
       expect(screen.queryByText('Hidden')).not.toBeInTheDocument();
     });
 
-    it('TC-V101: visible=true면 더링된', () => {
+    it('TC-V101: visible=true이면 렌더링된다', () => {
       render(<Toast visible={true}>Visible</Toast>);
       expect(screen.getByText('Visible')).toBeInTheDocument();
     });
   });
 
   describe('Auto-dismiss', () => {
-    it('TC-AD100: duration onClose가 출다', () => {
+    it('TC-AD100: duration 후 onClose가 호출된다', () => {
       const onClose = vi.fn();
 
       render(
@@ -114,7 +114,7 @@ describe('Toast (React)', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-AD101: duration=0면 동 힘비활화다', () => {
+    it('TC-AD101: duration=0이면 자동 닫힘 비활성화된다', () => {
       const onClose = vi.fn();
 
       render(
@@ -150,7 +150,7 @@ describe('Toast (React)', () => {
       expect(screen.getByRole('alert')).toHaveAttribute('data-variant', 'error');
     });
 
-    it('TC-O131: 보호 성 role 버이차단', () => {
+    it('TC-O131: 보호 속성 role 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Toast role="status">Message</Toast>);
       expect(screen.getByRole('alert')).toHaveAttribute('role', 'alert');

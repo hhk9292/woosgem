@@ -82,7 +82,7 @@ describe('Radio', () => {
   });
 
   describe('상태 변경', () => {
-    it('TC-S100: checked 태가 적용된다', () => {
+    it('TC-S100: checked 상태가 적용된다', () => {
       render(<Radio checked>Option</Radio>);
       const radio = screen.getByRole('radio');
 
@@ -90,7 +90,7 @@ describe('Radio', () => {
       expect(radio).toHaveAttribute('aria-checked', 'true');
     });
 
-    it('TC-S101: disabled 태가 적용된다', () => {
+    it('TC-S101: disabled 상태가 적용된다', () => {
       render(<Radio disabled>Option</Radio>);
       const radio = screen.getByRole('radio');
 
@@ -98,7 +98,7 @@ describe('Radio', () => {
       expect(radio).toBeDisabled();
     });
 
-    it('TC-S102: checked + disabled 태가 적용된다', () => {
+    it('TC-S102: checked + disabled 상태가 적용된다', () => {
       render(<Radio checked disabled>Option</Radio>);
       const radio = screen.getByRole('radio');
 
@@ -114,29 +114,29 @@ describe('Radio', () => {
       expect(screen.getByRole('radio')).toBeInTheDocument();
     });
 
-    it('TC-A101: aria-checked가 checked 태반영다', () => {
+    it('TC-A101: aria-checked가 checked 상태를 반영한다', () => {
       render(<Radio checked={false}>Option</Radio>);
       expect(screen.getByRole('radio')).toHaveAttribute('aria-checked', 'false');
     });
 
-    it('TC-A102: aria-checked가 true반영다', () => {
+    it('TC-A102: aria-checked가 true를 반영한다', () => {
       render(<Radio checked>Option</Radio>);
       expect(screen.getByRole('radio')).toHaveAttribute('aria-checked', 'true');
     });
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값 md이다', () => {
       render(<Radio>Option</Radio>);
       expect(screen.getByRole('radio')).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C011: color 기본값 primary다', () => {
+    it('TC-C011: color 기본값 primary이다', () => {
       render(<Radio>Option</Radio>);
       expect(screen.getByRole('radio')).toHaveAttribute('data-color', 'primary');
     });
 
-    it('TC-C012: checked 기본값 false다', () => {
+    it('TC-C012: checked 기본값 false이다', () => {
       render(<Radio>Option</Radio>);
       expect(screen.getByRole('radio')).toHaveAttribute('aria-checked', 'false');
     });
@@ -155,7 +155,7 @@ describe('Radio', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-O151: disabled 태서 onClick출 는', async () => {
+    it('TC-O151: disabled 상태에서 onClick 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -177,7 +177,7 @@ describe('Radio', () => {
       expect(radio).toHaveClass('custom-radio');
     });
 
-    it('TC-O130: 보호 성 role 버이차단', () => {
+    it('TC-O130: 보호 속성 role 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Radio role="checkbox">Option</Radio>);
       const radio = screen.getByRole('radio');
@@ -227,7 +227,7 @@ describe('RadioGroup', () => {
       expect(screen.getByRole('radiogroup')).toBeInTheDocument();
     });
 
-    it('TC-A201: disabled aria-disabled가 적용된다', () => {
+    it('TC-A201: disabled 시 aria-disabled가 적용된다', () => {
       render(
         <RadioGroup disabled>
           <Radio value="a">A</Radio>
@@ -238,7 +238,7 @@ describe('RadioGroup', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C200: orientation 기본값 vertical다', () => {
+    it('TC-C200: orientation 기본값 vertical이다', () => {
       render(
         <RadioGroup>
           <Radio value="a">A</Radio>

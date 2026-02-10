@@ -31,8 +31,8 @@ export type ModalProps = Prettify<
     class?: string;
     /** Modal title for aria-labelledby */
     title?: string;
-    /** Portal container selector (default: body) */
-    teleportTo?: string;
+    /** Portal container selector (default: body). Set to false to disable Teleport. */
+    teleportTo?: string | false;
     /** Disable focus trap */
     disableFocusTrap?: boolean;
     /** Disable ESC key close */
@@ -97,7 +97,7 @@ export const Modal = defineComponent({
       default: undefined,
     },
     teleportTo: {
-      type: String as PropType<string>,
+      type: [String, Boolean] as PropType<string | false>,
       default: 'body',
     },
     disableFocusTrap: {
@@ -215,40 +215,41 @@ export const Modal = defineComponent({
 
       const { class: baseClass, ...restAttrs } = modalAttrs.value;
 
-      return h(
-        Teleport,
-        { to: props.teleportTo },
-        h(
-          'div',
-          {
-            class: 'modal-container',
-            'data-open': props.open || undefined,
-          },
-          [
-            // Overlay
-            h('div', {
-              class: 'overlay',
-              'data-opacity': 'medium',
-              'data-level': 'modal',
-              'data-visible': props.open || undefined,
-              'aria-hidden': 'true',
-              onClick: handleOverlayClick,
-            }),
-            // Modal
-            h(
-              'div',
-              {
-                ref: modalRef,
-                class: baseClass,
-                ...restAttrs,
-                tabindex: -1,
-                'aria-labelledby': props.title ? 'modal-title' : undefined,
-              },
-              slots.default?.()
-            ),
-          ]
-        )
+      const content = h(
+        'div',
+        {
+          class: 'modal-container',
+          'data-open': props.open || undefined,
+        },
+        [
+          // Overlay
+          h('div', {
+            class: 'overlay',
+            'data-opacity': 'medium',
+            'data-level': 'modal',
+            'data-visible': props.open || undefined,
+            'aria-hidden': 'true',
+            onClick: handleOverlayClick,
+          }),
+          // Modal
+          h(
+            'div',
+            {
+              ref: modalRef,
+              class: baseClass,
+              ...restAttrs,
+              tabindex: -1,
+              'aria-labelledby': props.title ? 'modal-title' : undefined,
+            },
+            slots.default?.()
+          ),
+        ]
       );
+
+      if (props.teleportTo) {
+        return h(Teleport, { to: props.teleportTo }, [content]);
+      }
+      return content;
     };
   },
 }) as DefineComponent<ModalProps>;

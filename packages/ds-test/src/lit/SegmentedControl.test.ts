@@ -8,7 +8,7 @@ import { SegmentedControl as SegmentedControlDef } from '@woosgem-dev/core';
 
 describe('SegmentedControl (Lit)', () => {
   describe('Core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과 치다', async () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = SegmentedControlDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof SegmentedControl>>(html`
@@ -37,7 +37,8 @@ describe('SegmentedControl (Lit)', () => {
         <wg-segmented-control full-width></wg-segmented-control>
       `);
 
-      // Boolean attribute???문자?로 ?정??      expect(el.hasAttribute('data-full-width')).toBe(true);
+      // Boolean attribute는 문자열로 설정됨
+      expect(el.hasAttribute('data-full-width')).toBe(true);
       expect(coreAttrs['data-full-width']).toBe(true);
     });
 
@@ -48,7 +49,8 @@ describe('SegmentedControl (Lit)', () => {
         <wg-segmented-control disabled></wg-segmented-control>
       `);
 
-      // Boolean attribute???문자?로 ?정??      expect(el.hasAttribute('data-disabled')).toBe(true);
+      // Boolean attribute는 문자열로 설정됨
+      expect(el.hasAttribute('data-disabled')).toBe(true);
       expect(el.hasAttribute('disabled')).toBe(true);
       expect(coreAttrs['data-disabled']).toBe(true);
     });
@@ -67,7 +69,7 @@ describe('SegmentedControl (Lit)', () => {
       expect(buttons.length).toBe(2);
     });
 
-    it('TC-L301: 로티 변성데트다', async () => {
+    it('TC-L301: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
       const el = await fixture<InstanceType<typeof SegmentedControl>>(html`
         <wg-segmented-control size="md"></wg-segmented-control>
       `);

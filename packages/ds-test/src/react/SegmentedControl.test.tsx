@@ -63,7 +63,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-disabled', String(coreAttrs['data-disabled']));
     });
 
-    it('TC-R104: role group다', () => {
+    it('TC-R104: role이 항상 group이다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -145,7 +145,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveClass('custom');
     });
 
-    it('TC-O110: style 라용', () => {
+    it('TC-O110: style 인라인 적용', () => {
       render(
         <SegmentedControl style={{ gap: 8 }}>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -211,7 +211,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-disabled', 'true');
     });
 
-    it('TC-O133: 보호 성 role 버이차단', () => {
+    it('TC-O133: 보호 속성 role 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<SegmentedControl role="tablist"><SegmentedControl.Item>Item</SegmentedControl.Item></SegmentedControl>);
       const container = screen.getByRole('group');
@@ -221,7 +221,7 @@ describe('SegmentedControl', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값 md이다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -232,7 +232,7 @@ describe('SegmentedControl', () => {
       expect(container).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C011: fullWidth 기본값 false다', () => {
+    it('TC-C011: fullWidth 기본값 false이다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -243,7 +243,7 @@ describe('SegmentedControl', () => {
       expect(container).not.toHaveAttribute('data-full-width');
     });
 
-    it('TC-C012: disabled 기본값 false다', () => {
+    it('TC-C012: disabled 기본값 false이다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -271,7 +271,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass(coreAttrs.class);
     });
 
-    it('TC-RI101: selected propcore 결과 치다', () => {
+    it('TC-RI101: selected prop이 core 결과와 일치한다', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true });
 
       render(
@@ -301,7 +301,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toBeDisabled();
     });
 
-    it('TC-RI103: selected + disabled selected 선', () => {
+    it('TC-RI103: selected + disabled 동시 true 시 selected 우선', () => {
       const coreAttrs = SegmentedControlItemDef.mapPropsToAttrs({ selected: true, disabled: true });
 
       render(
@@ -335,7 +335,7 @@ describe('SegmentedControlItem', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-RI201: disabled 태서 onClick출 는', async () => {
+    it('TC-RI201: disabled 상태에서 onClick 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -353,7 +353,7 @@ describe('SegmentedControlItem', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
 
-    it('TC-RI202: selected 태서 onClick출다', async () => {
+    it('TC-RI202: selected 상태에서 onClick 호출된다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -406,8 +406,8 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveAttribute('type', 'submit');
     });
 
-    it('TC-RI303: type명시 으성다', () => {
-      // SegmentedControlItem? 기본 type???정?? ?음
+    it('TC-RI303: type 미명시 시 기본값 설정된다', () => {
+      // SegmentedControlItem은 기본 type을 지정하지 않음
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -418,7 +418,7 @@ describe('SegmentedControlItem', () => {
       expect(item).not.toHaveAttribute('type');
     });
 
-    it('TC-RI303b: type="button" 명시 button로 더', () => {
+    it('TC-RI303b: type="button" 명시 시 button으로 렌더링', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item type="button">Item</SegmentedControl.Item>
@@ -454,7 +454,7 @@ describe('SegmentedControlItem', () => {
       expect(item).toHaveClass('custom');
     });
 
-    it('TC-O121: data-analytics 추 용', () => {
+    it('TC-O121: data-analytics 추가 적용', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item data-analytics="click">Item</SegmentedControl.Item>
@@ -494,7 +494,7 @@ describe('SegmentedControlItem', () => {
   });
 
   describe('기본값', () => {
-    it('TC-I010: selected 기본값 false다', () => {
+    it('TC-I010: selected 기본값 false이다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -506,7 +506,7 @@ describe('SegmentedControlItem', () => {
       expect(item).not.toHaveAttribute('aria-selected');
     });
 
-    it('TC-I011: disabled 기본값 false다', () => {
+    it('TC-I011: disabled 기본값 false이다', () => {
       render(
         <SegmentedControl>
           <SegmentedControl.Item>Item</SegmentedControl.Item>
@@ -520,7 +520,7 @@ describe('SegmentedControlItem', () => {
 });
 
 describe('SegmentedControl + Item 조합', () => {
-  it('일 택 턴: 나이만 selected', () => {
+  it('단일 선택 패턴: 하나의 아이템만 selected', () => {
     render(
       <SegmentedControl>
         <SegmentedControl.Item>Option 1</SegmentedControl.Item>
@@ -550,7 +550,7 @@ describe('SegmentedControl + Item 조합', () => {
     expect(items[2]).not.toBeDisabled();
   });
 
-  it('SegmentedControlItem직접 import서 적용된다', () => {
+  it('SegmentedControlItem 직접 import해서 적용된다', () => {
     render(
       <SegmentedControl>
         <SegmentedControlItem>Direct Import</SegmentedControlItem>

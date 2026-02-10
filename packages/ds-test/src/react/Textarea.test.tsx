@@ -47,7 +47,7 @@ describe('Textarea', () => {
   });
 
   describe('Variant 변형', () => {
-    it('TC-C110: variant: outline 적용된다', () => {
+    it('TC-C110: variant: outline이 적용된다', () => {
       render(<Textarea variant="outline" data-testid="textarea" />);
       expect(screen.getByTestId('textarea')).toHaveAttribute('data-variant', 'outline');
     });
@@ -98,7 +98,7 @@ describe('Textarea', () => {
   });
 
   describe('상태 변경', () => {
-    it('TC-S100: disabled 태가 적용된다', () => {
+    it('TC-S100: disabled 상태가 적용된다', () => {
       render(<Textarea disabled data-testid="textarea" />);
       const textarea = screen.getByTestId('textarea');
 
@@ -106,7 +106,7 @@ describe('Textarea', () => {
       expect(textarea).toBeDisabled();
     });
 
-    it('TC-S101: error 태가 적용된다', () => {
+    it('TC-S101: error 상태가 적용된다', () => {
       render(<Textarea error data-testid="textarea" />);
       const textarea = screen.getByTestId('textarea');
 
@@ -114,7 +114,7 @@ describe('Textarea', () => {
       expect(textarea).toHaveAttribute('aria-invalid', 'true');
     });
 
-    it('TC-S102: disabled가 error보다 선다', () => {
+    it('TC-S102: disabled가 error보다 우선한다', () => {
       render(<Textarea disabled error data-testid="textarea" />);
       const textarea = screen.getByTestId('textarea');
 
@@ -124,17 +124,17 @@ describe('Textarea', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: variant 기본값 outline다', () => {
+    it('TC-C010: variant 기본값 outline이다', () => {
       render(<Textarea data-testid="textarea" />);
       expect(screen.getByTestId('textarea')).toHaveAttribute('data-variant', 'outline');
     });
 
-    it('TC-C011: size 기본값 md다', () => {
+    it('TC-C011: size 기본값 md이다', () => {
       render(<Textarea data-testid="textarea" />);
       expect(screen.getByTestId('textarea')).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C012: resize 기본값 vertical다', () => {
+    it('TC-C012: resize 기본값 vertical이다', () => {
       render(<Textarea data-testid="textarea" />);
       expect(screen.getByTestId('textarea')).toHaveAttribute('data-resize', 'vertical');
     });
@@ -182,7 +182,7 @@ describe('Textarea', () => {
       expect(handleFocus).toHaveBeenCalled();
     });
 
-    it('TC-O152: disabled 태서 onChange가 출 는', async () => {
+    it('TC-O152: disabled 상태에서 onChange가 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -204,7 +204,7 @@ describe('Textarea', () => {
       expect(textarea).toHaveClass('custom-textarea');
     });
 
-    it('TC-O110: style 라용', () => {
+    it('TC-O110: style 인라인 적용', () => {
       render(<Textarea style={{ minHeight: 100 }} data-testid="textarea" />);
       const textarea = screen.getByTestId('textarea');
 
@@ -233,7 +233,7 @@ describe('Textarea', () => {
       expect(textarea).toHaveAttribute('aria-label', 'Description');
     });
 
-    it('TC-O162: aria-describedby 성 달 용', () => {
+    it('TC-O162: aria-describedby 속성 전달 적용', () => {
       render(<Textarea aria-describedby="error-msg" data-testid="textarea" />);
       const textarea = screen.getByTestId('textarea');
 

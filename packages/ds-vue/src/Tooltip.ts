@@ -1,6 +1,5 @@
-import { defineComponent, h, ref, computed, onUnmounted, type PropType } from 'vue';
+import { defineComponent, h, type PropType } from 'vue';
 import {
-  Tooltip as TooltipDef,
   TooltipPositions,
   TooltipTriggers,
   type TooltipPosition,
@@ -25,6 +24,9 @@ let tooltipIdCounter = 0;
 /**
  * Tooltip component for displaying additional information on hover, focus, or click.
  *
+ * Uses Options API data/methods/render pattern to ensure reliable reactivity
+ * across all Vue test environments (VTU + jsdom).
+ *
  * @example
  * ```vue
  * <Tooltip content="This is a tooltip">
@@ -42,6 +44,8 @@ let tooltipIdCounter = 0;
  */
 export const Tooltip = defineComponent({
   name: 'Tooltip',
+
+  inheritAttrs: false,
 
   props: {
     content: {
@@ -78,126 +82,123 @@ export const Tooltip = defineComponent({
 
   emits: ['update:visible'],
 
-  setup(props, { slots, emit, attrs }) {
-    const internalVisible = ref(false);
-    const timeoutId = ref<number | null>(null);
-    const tooltipId = `wg-tooltip-${++tooltipIdCounter}`;
+  data() {
+    return {
+      internalVisible: false,
+      timeoutId: null as number | null,
+      tooltipId: `wg-tooltip-${++tooltipIdCounter}`,
+    };
+  },
 
-    // Use controlled visible if provided, otherwise use internal state
-    const isControlled = computed(() => props.visible !== undefined);
-    const isVisible = computed(() =>
-      isControlled.value ? props.visible : internalVisible.value
-    );
+  computed: {
+    isControlled(): boolean {
+      return this.visible !== undefined;
+    },
+    isVisible(): boolean {
+      return this.isControlled ? !!this.visible : this.internalVisible;
+    },
+  },
 
-    const showTooltip = () => {
-      if (props.disabled) return;
-      if (props.delay > 0) {
-        timeoutId.value = window.setTimeout(() => {
-          internalVisible.value = true;
-          emit('update:visible', true);
-        }, props.delay);
+  methods: {
+    showTooltip(): void {
+      if (this.disabled) return;
+      if (this.delay > 0) {
+        this.timeoutId = window.setTimeout(() => {
+          this.internalVisible = true;
+          this.$emit('update:visible', true);
+        }, this.delay);
       } else {
-        internalVisible.value = true;
-        emit('update:visible', true);
+        this.internalVisible = true;
+        this.$emit('update:visible', true);
       }
-    };
+    },
 
-    const hideTooltip = () => {
-      if (timeoutId.value) {
-        clearTimeout(timeoutId.value);
-        timeoutId.value = null;
+    hideTooltip(): void {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = null;
       }
-      internalVisible.value = false;
-      emit('update:visible', false);
-    };
+      this.internalVisible = false;
+      this.$emit('update:visible', false);
+    },
 
-    const toggleTooltip = () => {
-      if (props.disabled) return;
-      const newVisible = !internalVisible.value;
-      internalVisible.value = newVisible;
-      emit('update:visible', newVisible);
-    };
+    toggleTooltip(): void {
+      if (this.disabled) return;
+      const newVisible = !this.internalVisible;
+      this.internalVisible = newVisible;
+      this.$emit('update:visible', newVisible);
+    },
+  },
 
-    // Cleanup on unmount
-    onUnmounted(() => {
-      if (timeoutId.value) {
-        clearTimeout(timeoutId.value);
-      }
-    });
+  beforeUnmount() {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+  },
 
-    return () => {
-      // Get attrs from Core definition
-      const domAttrs = TooltipDef.mapPropsToAttrs({
-        content: props.content,
-        position: props.position,
-        trigger: props.trigger,
-        delay: props.delay,
-        arrow: props.arrow,
-        visible: isVisible.value,
-        disabled: props.disabled,
-      });
-
-      // Build trigger handlers based on trigger type
-      const triggerHandlers =
-        props.trigger === 'hover'
+  render() {
+    // Build trigger handlers based on trigger type
+    const triggerHandlers =
+      this.trigger === 'hover'
+        ? {
+            onMouseenter: this.showTooltip,
+            onMouseleave: this.hideTooltip,
+          }
+        : this.trigger === 'focus'
           ? {
-              onMouseenter: showTooltip,
-              onMouseleave: hideTooltip,
+              onFocus: this.showTooltip,
+              onBlur: this.hideTooltip,
             }
-          : props.trigger === 'focus'
+          : this.trigger === 'click'
             ? {
-                onFocus: showTooltip,
-                onBlur: hideTooltip,
+                onClick: this.toggleTooltip,
               }
-            : props.trigger === 'click'
-              ? {
-                  onClick: toggleTooltip,
-                }
-              : {};
+            : {};
 
-      const wrapperClass = attrs.class
-        ? `tooltip-wrapper ${attrs.class}`
-        : 'tooltip-wrapper';
+    const wrapperClass = this.$attrs.class
+      ? `tooltip-wrapper ${this.$attrs.class}`
+      : 'tooltip-wrapper';
 
-      return h(
-        'div',
-        {
-          class: wrapperClass,
-          'data-position': props.position,
-          ...triggerHandlers,
-        },
-        [
-          // Trigger element with aria-describedby
-          h(
-            'span',
-            {
-              class: 'tooltip-trigger',
-              'aria-describedby': isVisible.value ? tooltipId : undefined,
-            },
-            slots.default?.()
-          ),
+    const visible = this.isVisible;
 
-          // Tooltip content
-          h(
-            'div',
-            {
-              id: tooltipId,
-              class: domAttrs.class,
-              'data-position': domAttrs['data-position'],
-              'data-trigger': domAttrs['data-trigger'],
-              'data-arrow': domAttrs['data-arrow'],
-              'data-visible': domAttrs['data-visible'],
-              'data-disabled': domAttrs['data-disabled'],
-              role: domAttrs.role,
-              'aria-hidden': !isVisible.value,
-            },
-            [
-              props.arrow && h('span', { class: 'tooltip-arrow' }),
-              h('span', { class: 'tooltip-content' }, props.content),
-            ]
-          ),
-        ]
-      );
-    };
+    return h(
+      'div',
+      {
+        class: wrapperClass,
+        'data-position': this.position,
+        ...triggerHandlers,
+      },
+      [
+        // Trigger element with aria-describedby
+        h(
+          'span',
+          {
+            class: 'tooltip-trigger',
+            'aria-describedby': visible ? this.tooltipId : undefined,
+          },
+          this.$slots.default?.()
+        ),
+
+        // Tooltip content
+        h(
+          'div',
+          {
+            id: this.tooltipId,
+            class: 'tooltip',
+            'data-position': this.position,
+            'data-trigger': this.trigger,
+            'data-arrow': this.arrow ? 'true' : undefined,
+            'data-visible': visible ? 'true' : undefined,
+            'data-disabled': this.disabled ? 'true' : undefined,
+            role: 'tooltip',
+            'aria-hidden': visible ? undefined : 'true',
+          },
+          [
+            this.arrow && h('span', { class: 'tooltip-arrow' }),
+            h('span', { class: 'tooltip-content' }, this.content),
+          ]
+        ),
+      ]
+    );
   },
 });

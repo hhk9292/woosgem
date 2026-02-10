@@ -72,7 +72,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
     });
 
-    it('TC-C130: disabled > indeterminate 선위', () => {
+    it('TC-C130: disabled > indeterminate 우선순위', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, indeterminate: true });
 
       render(<Checkbox disabled indeterminate />);
@@ -82,7 +82,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-C131: disabled > checked 선위', () => {
+    it('TC-C131: disabled > checked 우선순위', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, checked: true });
 
       render(<Checkbox disabled checked />);
@@ -92,7 +92,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-C132: indeterminate > checked 선위', () => {
+    it('TC-C132: indeterminate > checked 우선순위', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true, checked: true });
 
       render(<Checkbox indeterminate checked />);
@@ -102,7 +102,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('TC-C133: 모든 태 truedisabled 선', () => {
+    it('TC-C133: 모든 상태 true 시 disabled 우선', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({
         disabled: true,
         indeterminate: true,
@@ -151,7 +151,7 @@ describe('Checkbox', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-R201: disabled 태서onClick출다 (divdisabled 미', async () => {
+    it('TC-R201: disabled 상태에서 onClick 호출된다 (div는 disabled 미지원)', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -160,7 +160,7 @@ describe('Checkbox', () => {
 
       await user.click(checkbox!);
 
-      // div ?소???이?브 disabled?지?하지 ?으므??릭??발생
+      // div 요소는 네이티브 disabled를 지원하지 않으므로 클릭이 발생
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
@@ -232,7 +232,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveClass('c');
     });
 
-    it('TC-O110: style 라용', () => {
+    it('TC-O110: style 인라인 적용', () => {
       render(<Checkbox style={{ marginTop: 8 }} />);
       const checkbox = document.querySelector('.checkbox');
 
@@ -251,7 +251,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('aria-label', 'Accept terms');
     });
 
-    it('TC-O141: aria-describedby 용', () => {
+    it('TC-O141: aria-describedby 적용', () => {
       render(<Checkbox aria-describedby="desc" />);
       const checkbox = document.querySelector('.checkbox');
 
@@ -283,28 +283,28 @@ describe('Checkbox', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값 md이다', () => {
       render(<Checkbox />);
       const checkbox = document.querySelector('.checkbox');
 
       expect(checkbox).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C011: checked 기본값 false (unchecked)다', () => {
+    it('TC-C011: checked 기본값 false (unchecked)이다', () => {
       render(<Checkbox />);
       const checkbox = document.querySelector('.checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'unchecked');
     });
 
-    it('TC-C012: indeterminate 기본값 false다', () => {
+    it('TC-C012: indeterminate 기본값 false이다', () => {
       render(<Checkbox />);
       const checkbox = document.querySelector('.checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'unchecked');
     });
 
-    it('TC-C013: disabled 기본값 false다', () => {
+    it('TC-C013: disabled 기본값 false이다', () => {
       render(<Checkbox />);
       const checkbox = document.querySelector('.checkbox');
 
@@ -313,28 +313,28 @@ describe('Checkbox', () => {
   });
 
   describe('상태 조합', () => {
-    it('checked: truedata-statechecked', () => {
+    it('checked: true이면 data-state가 checked이다', () => {
       render(<Checkbox checked />);
       const checkbox = document.querySelector('.checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'checked');
     });
 
-    it('checked: falsedata-stateunchecked', () => {
+    it('checked: false이면 data-state가 unchecked이다', () => {
       render(<Checkbox checked={false} />);
       const checkbox = document.querySelector('.checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'unchecked');
     });
 
-    it('indeterminate: truedata-stateindeterminate', () => {
+    it('indeterminate: true이면 data-state가 indeterminate이다', () => {
       render(<Checkbox indeterminate />);
       const checkbox = document.querySelector('.checkbox');
 
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('disabled: truedata-statedisabled', () => {
+    it('disabled: true이면 data-state가 disabled이다', () => {
       render(<Checkbox disabled />);
       const checkbox = document.querySelector('.checkbox');
 

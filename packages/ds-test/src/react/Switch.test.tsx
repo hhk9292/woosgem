@@ -94,7 +94,7 @@ describe('Switch', () => {
   });
 
   describe('상태 변경', () => {
-    it('TC-S100: checked 태가 적용된다', () => {
+    it('TC-S100: checked 상태가 적용된다', () => {
       render(<Switch checked />);
       const switchEl = screen.getByRole('switch');
 
@@ -102,7 +102,7 @@ describe('Switch', () => {
       expect(switchEl).toHaveAttribute('aria-checked', 'true');
     });
 
-    it('TC-S101: disabled 태가 적용된다', () => {
+    it('TC-S101: disabled 상태가 적용된다', () => {
       render(<Switch disabled />);
       const switchEl = screen.getByRole('switch');
 
@@ -110,7 +110,7 @@ describe('Switch', () => {
       expect(switchEl).toBeDisabled();
     });
 
-    it('TC-S102: checked + disabled 태가 적용된다', () => {
+    it('TC-S102: checked + disabled 상태가 적용된다', () => {
       render(<Switch checked disabled />);
       const switchEl = screen.getByRole('switch');
 
@@ -126,34 +126,34 @@ describe('Switch', () => {
       expect(screen.getByRole('switch')).toBeInTheDocument();
     });
 
-    it('TC-A101: aria-checked가 checked 태반영다', () => {
+    it('TC-A101: aria-checked가 checked 상태를 반영한다', () => {
       render(<Switch checked={false} />);
       expect(screen.getByRole('switch')).toHaveAttribute('aria-checked', 'false');
     });
 
-    it('TC-A102: aria-checked가 true반영다', () => {
+    it('TC-A102: aria-checked가 true를 반영한다', () => {
       render(<Switch checked />);
       expect(screen.getByRole('switch')).toHaveAttribute('aria-checked', 'true');
     });
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값 md이다', () => {
       render(<Switch />);
       expect(screen.getByRole('switch')).toHaveAttribute('data-size', 'md');
     });
 
-    it('TC-C011: color 기본값 primary다', () => {
+    it('TC-C011: color 기본값 primary이다', () => {
       render(<Switch />);
       expect(screen.getByRole('switch')).toHaveAttribute('data-color', 'primary');
     });
 
-    it('TC-C012: checked 기본값 false다', () => {
+    it('TC-C012: checked 기본값 false이다', () => {
       render(<Switch />);
       expect(screen.getByRole('switch')).toHaveAttribute('aria-checked', 'false');
     });
 
-    it('TC-C013: disabled 기본값 false다', () => {
+    it('TC-C013: disabled 기본값 false이다', () => {
       render(<Switch />);
       expect(screen.getByRole('switch')).not.toBeDisabled();
     });
@@ -172,7 +172,7 @@ describe('Switch', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('TC-O151: disabled 태서 onClick출 는', async () => {
+    it('TC-O151: disabled 상태에서 onClick 호출되지 않는다', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -194,7 +194,7 @@ describe('Switch', () => {
       expect(switchEl).toHaveClass('custom-switch');
     });
 
-    it('TC-O110: style 라용', () => {
+    it('TC-O110: style 인라인 적용', () => {
       render(<Switch style={{ marginTop: 16 }} />);
       const switchEl = screen.getByRole('switch');
 
@@ -214,7 +214,7 @@ describe('Switch', () => {
       expect(switchEl).toHaveAttribute('data-size', 'lg');
     });
 
-    it('TC-O131: 보호 성 role 버이차단', () => {
+    it('TC-O131: 보호 속성 role 오버라이드 차단', () => {
       // @ts-expect-error - 보호 속성 오버라이드 시도
       render(<Switch role="checkbox" />);
       const switchEl = screen.getByRole('switch');

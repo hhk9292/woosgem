@@ -117,12 +117,12 @@ describe('Spinner (Vue)', () => {
   });
 
   describe('기본값', () => {
-    it('TC-C010: size 기본값 md다', () => {
+    it('TC-C010: size 기본값이 md이다', () => {
       const wrapper = mount(Spinner);
       expect(wrapper.attributes('data-size')).toBe('md');
     });
 
-    it('TC-C011: color 기본값 primary다', () => {
+    it('TC-C011: color 기본값이 primary이다', () => {
       const wrapper = mount(Spinner);
       expect(wrapper.attributes('data-color')).toBe('primary');
     });
@@ -159,7 +159,7 @@ describe('Spinner (Vue)', () => {
       expect(wrapper.attributes('data-color')).toBe('muted');
     });
 
-    it('TC-O132: 보호 성 role 버이차단', () => {
+    it('TC-O132: 보호 속성 role 오버라이드 차단', () => {
       const wrapper = mount(Spinner, {
         attrs: { role: 'progressbar' },
       });

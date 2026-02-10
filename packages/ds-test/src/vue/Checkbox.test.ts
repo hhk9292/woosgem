@@ -69,7 +69,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-V105: 태 선위 - disabled > indeterminate', () => {
+    it('TC-V105: 상태 우선순위 - disabled > indeterminate', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, indeterminate: true });
 
       render(Checkbox, {
@@ -82,7 +82,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-V106: 태 선위 - disabled > checked', () => {
+    it('TC-V106: 상태 우선순위 - disabled > checked', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ disabled: true, checked: true });
 
       render(Checkbox, {
@@ -95,7 +95,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'disabled');
     });
 
-    it('TC-V107: 태 선위 - indeterminate > checked', () => {
+    it('TC-V107: 상태 우선순위 - indeterminate > checked', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ indeterminate: true, checked: true });
 
       render(Checkbox, {
@@ -108,7 +108,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', 'indeterminate');
     });
 
-    it('TC-V108: size: smcore 결과 치다', () => {
+    it('TC-V108: size: sm이 core 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ size: 'sm' });
 
       render(Checkbox, {
@@ -137,7 +137,7 @@ describe('Checkbox', () => {
       expect(checkbox).toHaveAttribute('data-state', coreAttrs['data-state']);
     });
 
-    it('TC-V110: unchecked 태가 core 결과 치다', () => {
+    it('TC-V110: unchecked 상태가 core 결과와 일치한다', () => {
       const coreAttrs = CheckboxDef.mapPropsToAttrs({ checked: false });
 
       render(Checkbox, {
@@ -166,8 +166,8 @@ describe('Checkbox', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    // Note: Checkbox??div??더링되므?disabled ?작??button??름
-    it('TC-V201: disabled 태서릭 벤 발생다 (divdisabled 미', async () => {
+    // Note: Checkbox는 div로 렌더링되므로 disabled 동작이 button과 다름
+    it('TC-V201: disabled 상태에서 클릭 이벤트 발생한다 (div는 disabled 미지원)', async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -179,7 +179,7 @@ describe('Checkbox', () => {
 
       await user.click(checkbox);
 
-      // div ?소???이?브 disabled?지?하지 ?음
+      // div 요소는 네이티브 disabled를 지원하지 않음
       expect(handleClick).toHaveBeenCalled();
     });
   });
@@ -212,14 +212,14 @@ describe('Checkbox', () => {
       expect(screen.getByLabelText('Accept terms and conditions')).toBeInTheDocument();
     });
 
-    it('TC-V303: name 성 적용된다', () => {
+    it('TC-V303: name 속성이 적용된다', () => {
       render(Checkbox, {
         attrs: { name: 'terms', 'aria-label': 'Terms' },
       });
       expect(screen.getByLabelText('Terms')).toHaveAttribute('name', 'terms');
     });
 
-    it('TC-V304: id 성 적용된다', () => {
+    it('TC-V304: id 속성이 적용된다', () => {
       render(Checkbox, {
         attrs: { id: 'terms-checkbox', 'aria-label': 'Terms' },
       });
@@ -281,7 +281,7 @@ describe('Checkbox', () => {
       expect(screen.getByLabelText('Checkbox')).toHaveAttribute('id', 'my-checkbox');
     });
 
-    it('TC-O140: aria-describedby 성 달 용', () => {
+    it('TC-O140: aria-describedby 속성 전달 적용', () => {
       render(Checkbox, {
         attrs: { 'aria-describedby': 'terms-desc', 'aria-label': 'Checkbox' },
       });

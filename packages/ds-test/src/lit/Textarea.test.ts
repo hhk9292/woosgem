@@ -8,7 +8,7 @@ import { Textarea as TextareaDef } from '@woosgem-dev/core';
 
 describe('Textarea (Lit)', () => {
   describe('Core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과 치다', async () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = TextareaDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Textarea>>(html`
@@ -67,7 +67,7 @@ describe('Textarea (Lit)', () => {
   });
 
   describe('Web Component 전용', () => {
-    it('TC-L300: 로티 변성데트다', async () => {
+    it('TC-L300: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
       const el = await fixture<InstanceType<typeof Textarea>>(html`
         <wg-textarea variant="outline"></wg-textarea>
       `);

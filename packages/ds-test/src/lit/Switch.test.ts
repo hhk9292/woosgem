@@ -8,7 +8,7 @@ import { Switch as SwitchDef } from '@woosgem-dev/core';
 
 describe('Switch (Lit)', () => {
   describe('Core 일치 검증', () => {
-    it('TC-L100: 기본 props가 core 결과 치다', async () => {
+    it('TC-L100: 기본 props가 core 결과와 일치한다', async () => {
       const coreAttrs = SwitchDef.mapPropsToAttrs({});
 
       const el = await fixture<InstanceType<typeof Switch>>(html`
@@ -55,7 +55,7 @@ describe('Switch (Lit)', () => {
   });
 
   describe('Web Component 전용', () => {
-    it('TC-L300: 로티 변성데트다', async () => {
+    it('TC-L300: 프로퍼티 변경 시 속성이 업데이트된다', async () => {
       const el = await fixture<InstanceType<typeof Switch>>(html`
         <wg-switch></wg-switch>
       `);
